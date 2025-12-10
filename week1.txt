@@ -1,0 +1,37 @@
+1. Structuration de l’application & fonctionnalités
+
+    - Rôles :
+        - User (patient) :
+            - consulter les créneaux libres d’un docteur
+            - réserver un créneau disponible
+            - annuler un rendez-vous réservé
+        - Docteur :
+            - définir ses créneaux disponibles (ajout/suppression de créneaux)
+            - voir son planning (rendez-vous réservés par les users)
+            - gérer ses rendez-vous (consulter / éventuellement annuler côté médecin)
+
+    - Fonctionnalités globales :
+        - Authentification (login / mot de passe).
+        - Gestion des créneaux et des réservations.
+        - Respect des contraintes : un créneau ne peut être réservé qu’une seule fois.
+        - Interface de consultation (liste, calendrier, filtres).
+
+2. Paramètres génériques
+
+    - Le système doit être adaptable à plusieurs contextes (ex. médecins, piscine, coiffeur). Donc paramètres à prévoir :
+    - Durée minimale d’un créneau (par défaut 15 min).
+    - Capacité max d’un créneau (ex : 1 personne pour un médecin, 30 pour une piscine).
+    - Plage horaire d’ouverture (ex : 8h – 18h).
+    - Statut d’un rendez-vous (réservé, annulé, terminé).
+
+3. Modèle conceptuel de données (MCD simplifié)
+
+    - Entités et associations :
+        - User (id_user, nom, prenom, email, mdp)
+        - Docteur (id_docteur, nom, prenom, specialite, email, mdp)
+        - Créneau (id_creneau, id_docteur, date_heure_debut, date_heure_fin, est_libre, capacite_max)
+        - RendezVous (id_rdv, id_user, id_creneau, statut, date_reservation)
+    - Relations :
+        1 Docteur → N Créneaux
+        1 Créneau → 0 ou 1 RendezVous (si réservé)
+        1 User → N RendezVous

@@ -1,0 +1,26 @@
+{
+  "slogan": "Vos traversées en quelques clics",
+  "description": [
+    "Découvrez le plaisir de voyager sur les flots avec MarieTeam, votre partenaire de confiance pour des traversées maritimes inoubliables. Explorez nos liaisons adaptées à vos besoins, consultez facilement nos horaires et nos tarifs compétitifs, et réservez votre place en quelques clics.",
+    "Avec MarieTeam, profitez d’un service fiable et d’un confort optimal pour toutes vos traversées. Embarquez dès aujourd’hui pour une expérience maritime unique !"
+  ],
+  "services": [
+    {
+      "title": "Liaison",
+      "description": "Consultez les liaisons disponible pour voyager avec MarieTeam !"
+    },
+    {
+      "title": "Tarifs",
+      "description": "Consultez les tarifs qui s'appliquent à vos profils, véhicules, et traversées !"
+    },
+    {
+      "title": "Horaires",
+      "description": "Consultez les horaires disponibles des liaisons, et choisissez-en un pour le réserver dès maintenant !"
+    },
+    {
+      "title": "Comptes",
+      "description": "Créez votre compte MarieTeam pour faciliter vos futurs traversées ! Connectez-vous et consultez votre profil pour retrouver vos données de voyage et accélerer vos réservations !"
+    }
+  ],
+  "contact": "Mariteam@gmail.com"
+}

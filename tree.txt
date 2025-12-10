@@ -1,0 +1,555 @@
+.
+├── README.md
+├── hs_err_pid17656.log
+├── hs_err_pid9188.log
+├── pom.xml
+├── replay_pid17656.log
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── saeweb
+│   │   │           ├── AppointmentApplication.java
+│   │   │           ├── controller
+│   │   │           │   ├── IndexPageController.java
+│   │   │           │   └── connexion
+│   │   │           │       └── ConnexionController.java
+│   │   │           ├── dao
+│   │   │           ├── database
+│   │   │           ├── dto
+│   │   │           │   ├── index_page
+│   │   │           │   │   └── IndexHeader.java
+│   │   │           │   └── reservation
+│   │   │           └── service
+│   │   │               └── index_page
+│   │   │                   ├── IndexPageService.java
+│   │   │                   └── IndexPageServiceImpl.java
+│   │   ├── resources
+│   │   │   └── application.properties
+│   │   └── webapp
+│   │       ├── Accueil.html
+│   │       ├── Accueil.jsp
+│   │       ├── WEB-INF
+│   │       │   └── web.xml
+│   │       ├── component.jsp
+│   │       ├── css
+│   │       │   ├── accueil
+│   │       │   │   └── Accueil.css
+│   │       │   ├── bootstrap.min.css
+│   │       │   ├── horaire
+│   │       │   │   └── horaire.css
+│   │       │   ├── index
+│   │       │   │   └── index.css
+│   │       │   ├── reservations
+│   │       │   │   └── reservation.css
+│   │       │   ├── stats
+│   │       │   │   └── stats.css
+│   │       │   ├── style.css
+│   │       │   └── tarifs
+│   │       │       └── tarifs.css
+│   │       ├── custom-calendar
+│   │       ├── img
+│   │       │   ├── BATEAU.jpg
+│   │       │   ├── Bateau2.png
+│   │       │   ├── Bateau2_c.jpg
+│   │       │   ├── Bateau2_couper.jpg
+│   │       │   ├── about.jpg
+│   │       │   ├── ajout_horaire.jpg
+│   │       │   ├── ajout_horaire.png
+│   │       │   ├── bateau.png
+│   │       │   ├── bg-hero.jpg
+│   │       │   ├── booking.jpg
+│   │       │   ├── check-mark.png
+│   │       │   ├── cookie.png
+│   │       │   ├── destination-1.jpg
+│   │       │   ├── destination-2.jpg
+│   │       │   ├── destination-3.jpg
+│   │       │   ├── destination-4.jpg
+│   │       │   ├── package-1.jpg
+│   │       │   ├── package-2.jpg
+│   │       │   ├── package-3.jpg
+│   │       │   ├── profil.png
+│   │       │   ├── result_arrow.png
+│   │       │   └── trash.png
+│   │       ├── index.jsp
+│   │       ├── js
+│   │       │   ├── accueil
+│   │       │   │   ├── accueil.js
+│   │       │   │   ├── admin.js
+│   │       │   │   └── index.js
+│   │       │   ├── admin
+│   │       │   ├── connexion
+│   │       │   │   └── connexion.js
+│   │       │   ├── horaire
+│   │       │   │   ├── horaire.js
+│   │       │   │   ├── horaire_admin.js
+│   │       │   │   ├── horaire_input_handler.js
+│   │       │   │   ├── horaire_link_retriever.js
+│   │       │   │   └── horaire_results_header.js
+│   │       │   ├── liaison
+│   │       │   │   ├── header_results.js
+│   │       │   │   ├── liaison.js
+│   │       │   │   ├── liaison_results_handler.js
+│   │       │   │   ├── port_handler.js
+│   │       │   │   └── secteur_handler.js
+│   │       │   ├── main.js
+│   │       │   ├── profile
+│   │       │   │   ├── profile.js
+│   │       │   │   ├── statistiques.js
+│   │       │   │   └── tarifs.js
+│   │       │   ├── reservations
+│   │       │   │   ├── enregistrement_reservation.js
+│   │       │   │   └── reservation.js
+│   │       │   ├── stats
+│   │       │   └── tarifs
+│   │       ├── lib
+│   │       │   ├── animate
+│   │       │   │   ├── animate.css
+│   │       │   │   └── animate.min.css
+│   │       │   ├── easing
+│   │       │   │   ├── easing.js
+│   │       │   │   └── easing.min.js
+│   │       │   ├── owlcarousel
+│   │       │   │   ├── LICENSE
+│   │       │   │   ├── assets
+│   │       │   │   │   ├── ajax-loader.gif
+│   │       │   │   │   ├── owl.carousel.css
+│   │       │   │   │   ├── owl.carousel.min.css
+│   │       │   │   │   ├── owl.theme.default.css
+│   │       │   │   │   ├── owl.theme.default.min.css
+│   │       │   │   │   ├── owl.theme.green.css
+│   │       │   │   │   ├── owl.theme.green.min.css
+│   │       │   │   │   └── owl.video.play.png
+│   │       │   │   ├── owl.carousel.js
+│   │       │   │   └── owl.carousel.min.js
+│   │       │   ├── tempusdominus
+│   │       │   │   ├── css
+│   │       │   │   │   ├── tempusdominus-bootstrap-4.css
+│   │       │   │   │   └── tempusdominus-bootstrap-4.min.css
+│   │       │   │   └── js
+│   │       │   │       ├── moment-timezone.min.js
+│   │       │   │       ├── moment.min.js
+│   │       │   │       ├── tempusdominus-bootstrap-4.js
+│   │       │   │       └── tempusdominus-bootstrap-4.min.js
+│   │       │   ├── waypoints
+│   │       │   │   ├── links.php
+│   │       │   │   └── waypoints.min.js
+│   │       │   └── wow
+│   │       │       ├── wow.js
+│   │       │       └── wow.min.js
+│   │       ├── reference
+│   │       │   └── js
+│   │       │       ├── admin.js
+│   │       │       ├── connexion.js
+│   │       │       ├── enregistrement_reservation.js
+│   │       │       ├── header_results.js
+│   │       │       ├── horaire.js
+│   │       │       ├── horaire_admin.js
+│   │       │       ├── horaire_input_handler.js
+│   │       │       ├── horaire_link_retriever.js
+│   │       │       ├── horaire_results_header.js
+│   │       │       ├── index.js
+│   │       │       ├── liaison.js
+│   │       │       ├── liaison_results_handler.js
+│   │       │       ├── main.js
+│   │       │       ├── port_handler.js
+│   │       │       ├── profile.js
+│   │       │       ├── reservation.js
+│   │       │       ├── secteur_handler.js
+│   │       │       ├── statistiques.js
+│   │       │       └── tarifs.js
+│   │       └── temp
+│   │           ├── Accueil.jsp
+│   │           ├── Vue
+│   │           │   ├── Stats
+│   │           │   │   ├── getRevenue.php
+│   │           │   │   ├── getStats.php
+│   │           │   │   └── stats.php
+│   │           │   ├── ajout_horaire
+│   │           │   │   ├── ajout_horaire.php
+│   │           │   │   ├── bateau.php
+│   │           │   │   ├── liaison.php
+│   │           │   │   └── tarifs.php
+│   │           │   ├── ajout_reservation
+│   │           │   │   └── ajout_reservation.php
+│   │           │   ├── connexion
+│   │           │   │   ├── bd.compte.inc.php
+│   │           │   │   ├── connect.php
+│   │           │   │   ├── connexion.html.php
+│   │           │   │   ├── creerUnCompte.html
+│   │           │   │   └── deconnect.php
+│   │           │   ├── first_cruise
+│   │           │   │   └── get_first_cruise.php
+│   │           │   ├── horaire
+│   │           │   │   ├── delete_horaire.php
+│   │           │   │   ├── get_coast_names.php
+│   │           │   │   ├── horaire.html.php
+│   │           │   │   ├── horaire.php
+│   │           │   │   ├── horaire_options.php
+│   │           │   │   ├── horaire_results.php
+│   │           │   │   ├── resultsHandler.php
+│   │           │   │   └── validate_horaire_modification.php
+│   │           │   ├── liaison
+│   │           │   │   ├── liaison.php
+│   │           │   │   └── liaisons.html.php
+│   │           │   ├── profil
+│   │           │   │   ├── admin.php
+│   │           │   │   ├── modifierProfil.php
+│   │           │   │   ├── profil.php
+│   │           │   │   └── supp_compte.php
+│   │           │   ├── reservation
+│   │           │   │   ├── reservation.html.php
+│   │           │   │   ├── reservation.places_left.php
+│   │           │   │   └── reservation.prices.php
+│   │           │   ├── rgpd.html
+│   │           │   ├── statAdmin.php
+│   │           │   └── tarif
+│   │           │       ├── resultsHandler_tarifs.php
+│   │           │       ├── tarif-tableau.php
+│   │           │       └── tarifs.html.php
+│   │           ├── getRacine.php
+│   │           └── public
+│   │               ├── BATEAU.jpg
+│   │               ├── Bateau2.png
+│   │               ├── Bateau2_c.jpg
+│   │               ├── Bateau2_couper.jpg
+│   │               ├── about.jpg
+│   │               ├── ajout_horaire.jpg
+│   │               ├── ajout_horaire.png
+│   │               ├── bateau.png
+│   │               ├── bg-hero.jpg
+│   │               ├── booking.jpg
+│   │               ├── check-mark.png
+│   │               ├── cookie.png
+│   │               ├── destination-1.jpg
+│   │               ├── destination-2.jpg
+│   │               ├── destination-3.jpg
+│   │               ├── destination-4.jpg
+│   │               ├── package-1.jpg
+│   │               ├── package-2.jpg
+│   │               ├── package-3.jpg
+│   │               ├── profil.png
+│   │               ├── result_arrow.png
+│   │               └── trash.png
+│   ├── test
+│   │   └── styleTests
+│   │       └── css
+│   │           ├── accueil
+│   │           └── index
+│   └── text-analyzer.iml
+├── tables.sql
+├── target
+│   ├── classes
+│   │   ├── application.properties
+│   │   └── com
+│   │       └── saeweb
+│   │           ├── AppointmentApplication.class
+│   │           ├── controller
+│   │           │   ├── IndexPageController.class
+│   │           │   └── connexion
+│   │           │       └── ConnexionController.class
+│   │           ├── dto
+│   │           │   └── index_page
+│   │           │       └── IndexHeader.class
+│   │           └── service
+│   │               └── index_page
+│   │                   ├── IndexPageService.class
+│   │                   └── IndexPageServiceImpl.class
+│   ├── generated-sources
+│   │   └── annotations
+│   ├── maven-archiver
+│   │   └── pom.properties
+│   ├── maven-status
+│   │   └── maven-compiler-plugin
+│   │       └── compile
+│   │           └── default-compile
+│   │               ├── createdFiles.lst
+│   │               └── inputFiles.lst
+│   ├── sae-0.0.1-SNAPSHOT
+│   │   ├── Accueil.html
+│   │   ├── Accueil.jsp
+│   │   ├── META-INF
+│   │   ├── WEB-INF
+│   │   │   ├── classes
+│   │   │   │   ├── application.properties
+│   │   │   │   └── com
+│   │   │   │       └── saeweb
+│   │   │   │           ├── AppointmentApplication.class
+│   │   │   │           ├── controller
+│   │   │   │           │   ├── IndexPageController.class
+│   │   │   │           │   └── connexion
+│   │   │   │           │       └── ConnexionController.class
+│   │   │   │           ├── dto
+│   │   │   │           │   └── index_page
+│   │   │   │           │       └── IndexHeader.class
+│   │   │   │           └── service
+│   │   │   │               └── index_page
+│   │   │   │                   ├── IndexPageService.class
+│   │   │   │                   └── IndexPageServiceImpl.class
+│   │   │   ├── lib
+│   │   │   │   ├── classmate-1.7.0.jar
+│   │   │   │   ├── hibernate-validator-8.0.2.Final.jar
+│   │   │   │   ├── jackson-annotations-2.19.0.jar
+│   │   │   │   ├── jackson-core-2.19.0.jar
+│   │   │   │   ├── jackson-databind-2.19.0.jar
+│   │   │   │   ├── jackson-datatype-jdk8-2.19.0.jar
+│   │   │   │   ├── jackson-datatype-jsr310-2.19.0.jar
+│   │   │   │   ├── jackson-module-parameter-names-2.19.0.jar
+│   │   │   │   ├── jakarta.annotation-api-2.1.1.jar
+│   │   │   │   ├── jakarta.validation-api-3.0.2.jar
+│   │   │   │   ├── jboss-logging-3.6.1.Final.jar
+│   │   │   │   ├── jul-to-slf4j-2.0.17.jar
+│   │   │   │   ├── log4j-api-2.24.3.jar
+│   │   │   │   ├── log4j-to-slf4j-2.24.3.jar
+│   │   │   │   ├── logback-classic-1.5.18.jar
+│   │   │   │   ├── logback-core-1.5.18.jar
+│   │   │   │   ├── micrometer-commons-1.15.0.jar
+│   │   │   │   ├── micrometer-observation-1.15.0.jar
+│   │   │   │   ├── netty-buffer-4.1.121.Final.jar
+│   │   │   │   ├── netty-codec-4.1.121.Final.jar
+│   │   │   │   ├── netty-codec-dns-4.1.121.Final.jar
+│   │   │   │   ├── netty-codec-http-4.1.121.Final.jar
+│   │   │   │   ├── netty-codec-http2-4.1.121.Final.jar
+│   │   │   │   ├── netty-codec-socks-4.1.121.Final.jar
+│   │   │   │   ├── netty-common-4.1.121.Final.jar
+│   │   │   │   ├── netty-handler-4.1.121.Final.jar
+│   │   │   │   ├── netty-handler-proxy-4.1.121.Final.jar
+│   │   │   │   ├── netty-resolver-4.1.121.Final.jar
+│   │   │   │   ├── netty-resolver-dns-4.1.121.Final.jar
+│   │   │   │   ├── netty-resolver-dns-classes-macos-4.1.121.Final.jar
+│   │   │   │   ├── netty-resolver-dns-native-macos-4.1.121.Final-osx-x86_64.jar
+│   │   │   │   ├── netty-transport-4.1.121.Final.jar
+│   │   │   │   ├── netty-transport-classes-epoll-4.1.121.Final.jar
+│   │   │   │   ├── netty-transport-native-epoll-4.1.121.Final-linux-x86_64.jar
+│   │   │   │   ├── netty-transport-native-unix-common-4.1.121.Final.jar
+│   │   │   │   ├── reactive-streams-1.0.4.jar
+│   │   │   │   ├── reactor-core-3.7.6.jar
+│   │   │   │   ├── reactor-netty-core-1.2.6.jar
+│   │   │   │   ├── reactor-netty-http-1.2.6.jar
+│   │   │   │   ├── slf4j-api-2.0.17.jar
+│   │   │   │   ├── snakeyaml-2.4.jar
+│   │   │   │   ├── spring-aop-6.2.7.jar
+│   │   │   │   ├── spring-beans-6.2.7.jar
+│   │   │   │   ├── spring-boot-3.5.0.jar
+│   │   │   │   ├── spring-boot-autoconfigure-3.5.0.jar
+│   │   │   │   ├── spring-boot-starter-3.5.0.jar
+│   │   │   │   ├── spring-boot-starter-json-3.5.0.jar
+│   │   │   │   ├── spring-boot-starter-logging-3.5.0.jar
+│   │   │   │   ├── spring-boot-starter-reactor-netty-3.5.0.jar
+│   │   │   │   ├── spring-boot-starter-tomcat-3.5.0.jar
+│   │   │   │   ├── spring-boot-starter-validation-3.5.0.jar
+│   │   │   │   ├── spring-boot-starter-web-3.5.0.jar
+│   │   │   │   ├── spring-boot-starter-webflux-3.5.0.jar
+│   │   │   │   ├── spring-context-6.2.7.jar
+│   │   │   │   ├── spring-core-6.2.7.jar
+│   │   │   │   ├── spring-expression-6.2.7.jar
+│   │   │   │   ├── spring-jcl-6.2.7.jar
+│   │   │   │   ├── spring-web-6.2.7.jar
+│   │   │   │   ├── spring-webflux-6.2.7.jar
+│   │   │   │   ├── spring-webmvc-6.2.7.jar
+│   │   │   │   ├── tomcat-embed-core-10.1.41.jar
+│   │   │   │   ├── tomcat-embed-el-10.1.41.jar
+│   │   │   │   └── tomcat-embed-websocket-10.1.41.jar
+│   │   │   └── web.xml
+│   │   ├── component.jsp
+│   │   ├── css
+│   │   │   ├── accueil
+│   │   │   │   └── Accueil.css
+│   │   │   ├── bootstrap.min.css
+│   │   │   ├── horaire
+│   │   │   │   └── horaire.css
+│   │   │   ├── index
+│   │   │   │   └── index.css
+│   │   │   ├── reservations
+│   │   │   │   └── reservation.css
+│   │   │   ├── stats
+│   │   │   │   └── stats.css
+│   │   │   ├── style.css
+│   │   │   └── tarifs
+│   │   │       └── tarifs.css
+│   │   ├── img
+│   │   │   ├── BATEAU.jpg
+│   │   │   ├── Bateau2.png
+│   │   │   ├── Bateau2_c.jpg
+│   │   │   ├── Bateau2_couper.jpg
+│   │   │   ├── about.jpg
+│   │   │   ├── ajout_horaire.jpg
+│   │   │   ├── ajout_horaire.png
+│   │   │   ├── bateau.png
+│   │   │   ├── bg-hero.jpg
+│   │   │   ├── booking.jpg
+│   │   │   ├── check-mark.png
+│   │   │   ├── cookie.png
+│   │   │   ├── destination-1.jpg
+│   │   │   ├── destination-2.jpg
+│   │   │   ├── destination-3.jpg
+│   │   │   ├── destination-4.jpg
+│   │   │   ├── package-1.jpg
+│   │   │   ├── package-2.jpg
+│   │   │   ├── package-3.jpg
+│   │   │   ├── profil.png
+│   │   │   ├── result_arrow.png
+│   │   │   └── trash.png
+│   │   ├── index.jsp
+│   │   ├── js
+│   │   │   ├── accueil
+│   │   │   │   ├── accueil.js
+│   │   │   │   ├── admin.js
+│   │   │   │   └── index.js
+│   │   │   ├── connexion
+│   │   │   │   └── connexion.js
+│   │   │   ├── horaire
+│   │   │   │   ├── horaire.js
+│   │   │   │   ├── horaire_admin.js
+│   │   │   │   ├── horaire_input_handler.js
+│   │   │   │   ├── horaire_link_retriever.js
+│   │   │   │   └── horaire_results_header.js
+│   │   │   ├── liaison
+│   │   │   │   ├── header_results.js
+│   │   │   │   ├── liaison.js
+│   │   │   │   ├── liaison_results_handler.js
+│   │   │   │   ├── port_handler.js
+│   │   │   │   └── secteur_handler.js
+│   │   │   ├── main.js
+│   │   │   ├── profile
+│   │   │   │   ├── profile.js
+│   │   │   │   ├── statistiques.js
+│   │   │   │   └── tarifs.js
+│   │   │   └── reservations
+│   │   │       ├── enregistrement_reservation.js
+│   │   │       └── reservation.js
+│   │   ├── lib
+│   │   │   ├── animate
+│   │   │   │   ├── animate.css
+│   │   │   │   └── animate.min.css
+│   │   │   ├── easing
+│   │   │   │   ├── easing.js
+│   │   │   │   └── easing.min.js
+│   │   │   ├── owlcarousel
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── assets
+│   │   │   │   │   ├── ajax-loader.gif
+│   │   │   │   │   ├── owl.carousel.css
+│   │   │   │   │   ├── owl.carousel.min.css
+│   │   │   │   │   ├── owl.theme.default.css
+│   │   │   │   │   ├── owl.theme.default.min.css
+│   │   │   │   │   ├── owl.theme.green.css
+│   │   │   │   │   ├── owl.theme.green.min.css
+│   │   │   │   │   └── owl.video.play.png
+│   │   │   │   ├── owl.carousel.js
+│   │   │   │   └── owl.carousel.min.js
+│   │   │   ├── tempusdominus
+│   │   │   │   ├── css
+│   │   │   │   │   ├── tempusdominus-bootstrap-4.css
+│   │   │   │   │   └── tempusdominus-bootstrap-4.min.css
+│   │   │   │   └── js
+│   │   │   │       ├── moment-timezone.min.js
+│   │   │   │       ├── moment.min.js
+│   │   │   │       ├── tempusdominus-bootstrap-4.js
+│   │   │   │       └── tempusdominus-bootstrap-4.min.js
+│   │   │   ├── waypoints
+│   │   │   │   ├── links.php
+│   │   │   │   └── waypoints.min.js
+│   │   │   └── wow
+│   │   │       ├── wow.js
+│   │   │       └── wow.min.js
+│   │   ├── reference
+│   │   │   └── js
+│   │   │       ├── admin.js
+│   │   │       ├── connexion.js
+│   │   │       ├── enregistrement_reservation.js
+│   │   │       ├── header_results.js
+│   │   │       ├── horaire.js
+│   │   │       ├── horaire_admin.js
+│   │   │       ├── horaire_input_handler.js
+│   │   │       ├── horaire_link_retriever.js
+│   │   │       ├── horaire_results_header.js
+│   │   │       ├── index.js
+│   │   │       ├── liaison.js
+│   │   │       ├── liaison_results_handler.js
+│   │   │       ├── main.js
+│   │   │       ├── port_handler.js
+│   │   │       ├── profile.js
+│   │   │       ├── reservation.js
+│   │   │       ├── secteur_handler.js
+│   │   │       ├── statistiques.js
+│   │   │       └── tarifs.js
+│   │   └── temp
+│   │       ├── Accueil.jsp
+│   │       ├── Vue
+│   │       │   ├── Stats
+│   │       │   │   ├── getRevenue.php
+│   │       │   │   ├── getStats.php
+│   │       │   │   └── stats.php
+│   │       │   ├── ajout_horaire
+│   │       │   │   ├── ajout_horaire.php
+│   │       │   │   ├── bateau.php
+│   │       │   │   ├── liaison.php
+│   │       │   │   └── tarifs.php
+│   │       │   ├── ajout_reservation
+│   │       │   │   └── ajout_reservation.php
+│   │       │   ├── connexion
+│   │       │   │   ├── bd.compte.inc.php
+│   │       │   │   ├── connect.php
+│   │       │   │   ├── connexion.html.php
+│   │       │   │   ├── creerUnCompte.html
+│   │       │   │   └── deconnect.php
+│   │       │   ├── first_cruise
+│   │       │   │   └── get_first_cruise.php
+│   │       │   ├── horaire
+│   │       │   │   ├── delete_horaire.php
+│   │       │   │   ├── get_coast_names.php
+│   │       │   │   ├── horaire.html.php
+│   │       │   │   ├── horaire.php
+│   │       │   │   ├── horaire_options.php
+│   │       │   │   ├── horaire_results.php
+│   │       │   │   ├── resultsHandler.php
+│   │       │   │   └── validate_horaire_modification.php
+│   │       │   ├── liaison
+│   │       │   │   ├── liaison.php
+│   │       │   │   └── liaisons.html.php
+│   │       │   ├── profil
+│   │       │   │   ├── admin.php
+│   │       │   │   ├── modifierProfil.php
+│   │       │   │   ├── profil.php
+│   │       │   │   └── supp_compte.php
+│   │       │   ├── reservation
+│   │       │   │   ├── reservation.html.php
+│   │       │   │   ├── reservation.places_left.php
+│   │       │   │   └── reservation.prices.php
+│   │       │   ├── rgpd.html
+│   │       │   ├── statAdmin.php
+│   │       │   └── tarif
+│   │       │       ├── resultsHandler_tarifs.php
+│   │       │       ├── tarif-tableau.php
+│   │       │       └── tarifs.html.php
+│   │       ├── getRacine.php
+│   │       └── public
+│   │           ├── BATEAU.jpg
+│   │           ├── Bateau2.png
+│   │           ├── Bateau2_c.jpg
+│   │           ├── Bateau2_couper.jpg
+│   │           ├── about.jpg
+│   │           ├── ajout_horaire.jpg
+│   │           ├── ajout_horaire.png
+│   │           ├── bateau.png
+│   │           ├── bg-hero.jpg
+│   │           ├── booking.jpg
+│   │           ├── check-mark.png
+│   │           ├── cookie.png
+│   │           ├── destination-1.jpg
+│   │           ├── destination-2.jpg
+│   │           ├── destination-3.jpg
+│   │           ├── destination-4.jpg
+│   │           ├── package-1.jpg
+│   │           ├── package-2.jpg
+│   │           ├── package-3.jpg
+│   │           ├── profil.png
+│   │           ├── result_arrow.png
+│   │           └── trash.png
+│   ├── sae-0.0.1-SNAPSHOT.war
+│   └── sae-0.0.1-SNAPSHOT.war.original
+├── tree.txt
+└── week1.txt
+
+137 directories, 416 files

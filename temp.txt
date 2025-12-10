@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html; charset=UTF-8" import="tools.*" %>
+<%!
+    boolean connected = session.getAttribute("login") == null ? false : (boolean) session.getAttribute("login");
+%>
+
+<head>
+    <!-- Indique l'encodage des caractères utilisé par la page, ici UTF-8, ce qui permet d'afficher correctement des caractères spéciaux comme les accents français (é, è, à...) -->
+    <meta charset="utf-8">
+    <!-- Définit le titre de la page, affiché dans l’onglet du navigateur ou dans les résultats de recherche. -->
+    <title>Mariteam</title>
+    <!-- Rend la page responsive. -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+
+    <!-- Permet de faire apparaitre les elements progressivement -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+
+    <!-- Lien avec le css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Lien avec le css -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <script type="module" src="js/index.js" defer></script>
+</head>
+
+<body>
+    <!-- Pour ne pas avoir de superposition de texte !-->
+    <div class="container-fluid position-relative p-0">
+        <!-- Permet d'avoir la navbar en haut a droite -->
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <!-- Pour avoir le logo et le nom de la compagnie en haut a gauche !-->
+            <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i><a href="index.php">Mariteam</a></h1>
+
+
+            <!-- Navbar !-->
+
+            <!-- Sert a former la navbar, a separer les éléments, ne pas les superposer et avoir le fond (photo) !-->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <!-- Navbar pour naviguer et selectionner la page que l'ont souhaite visiter !-->
+                    <a href="index.php" class="nav-item nav-link active">Accueil</a>
+                    <a href="Vue/liaisons.html.php" class="nav-item nav-link">Liaisons</a>
+                    <a href="Vue/tarifs.html.php" class="nav-item nav-link">Tarifs</a>
+                    <a href="Vue/horaire.html.php" class="nav-item nav-link">Horaires</a>
+                </div>
+                <% 
+                    if (connected) {
+                        out.println("<a href='Vue/connexion.html.php' class='btn btn-primary rounded-pill py-2 px-4'>Se connecter</a>")
+                    } else {
+                        out.println("<a href='Vue/profil.php' class='btn btn-primary rounded-pill py-2 px-4'>Mon Profil</a>")
+                    }
+                %>
+            </div>
+        </nav>
+
+        <!-- Permet d'avoir la barre de recherche + d'afficher la photo en fond !-->
+        <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+            <!-- Mise en forme !-->
+            <div class="container py-5">
+                <div class="row justify-content-center py-5">
+                    <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                        <h1 class="display-3 text-white mb-3 animated slideInDown">Bienvenue chez Mariteam</h1>
+                        <p class="fs-4 text-white mb-4 animated slideInDown">Vos traversées en quelques clics </p>
+                        <div class="position-relative w-75 mx-auto animated slideInDown">
+                            <!-- Permet d'avoir une barre de recherche !-->
+                            <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Ex: Locmaria">
+                            <!-- Affiche le bouton "Rechercher" !-->
+                            <button type="button" class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px;">Recherche</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Navbar -->
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <!-- row : Crée une ligne Bootstrap pour placer plusieurs colonnes côte à côte.
+            g-5 : Ajoute un espacement (gutter) entre les colonnes (ici un espace moyen/large). -->
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <!-- Permet de placer l'image a gauche ainsi que de choisir sa taille -->
+                    <div class="position-relative h-100">
+                        <!-- Permet d'afficher l'image-->
+                        <img class="img-fluid position-absolute w-100 h-100" src="https://marieteam.louiseisabel.fr/public/bateau.png" alt="" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">A propos de nous</h6>
+                    <h1 class="mb-4">Bienvenue chez <span class="text-primary">Mariteam</span></h1>
+                    <!-- Permet de mettre du texte a coter de l'image -->
+                    <p class="mb-4">Découvrez le plaisir de voyager sur les flots avec Mariteam, votre partenaire de confiance pour des traversées maritimes inoubliables. Explorez nos liaisons adaptées à vos besoins, consultez facilement nos horaires et nos tarifs compétitifs, et réservez votre place en quelques clics. </p>
+                    <!-- Cette nouvelle ligne, permet de faire un nouveau paragraphe-->
+                    <p class="mb-4">Avec Mariteam, profitez d’un service fiable et d’un confort optimal pour toutes vos traversées. Embarquez dès aujourd’hui pour une expérience maritime unique ! </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Service Start -->
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <!-- Sert à afficher un en-tête de section "Services", centré et animé, en utilisant Bootstrap et une bibliothèque d’animations -->
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
+                <h1 class="mb-5">Nos Services</h1>
+            </div>
+            <!-- row : Lance une grille Bootstrap pour aligner les éléments horizontalement (en colonnes).
+            g-4 : Ajoute des espacements (gutter) uniformes entre les colonnes (taille moyenne : 4)-->
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <!-- Permet de placer les icones de Services cote a cote-->
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+
+                            <!-- Permet de faires un lien vers la page, via l' icone-->
+                            <a href="Vue/liaisons.html.php">
+                                <h5>Liaisons</h5>
+                            </a>
+                            <p>Consultez les liaisons disponible pour voyager avec MarieTeam ! </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
+                            <!-- Permet de faires un lien vers la page, via l' icone-->
+                            <a href="Vue/tarifs.html.php">
+                                <h5>Tarifs</h5>
+                            </a>
+                            <p>Consultez les tarifs qui s'appliquent à vos profils, véhicules, et traversées ! </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-user text-primary mb-4"></i>
+                            <!-- Permet de faires un lien vers la page, via l' icone-->
+                            <a href="Vue/horaire.html.php">
+                                <h5>Horaires</h5>
+                            </a>
+                            <p>Consultez les horaires disponibles des liaisons, et choisissez-en un pour le réserver dès maintenant ! </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-cog text-primary mb-4"></i>
+                            <!-- Permet de faires un lien vers la page, via l' icone-->
+                            <a href="Vue/creerUnCompte.html">
+                                <h5>Comptes</h5>
+                            </a>
+                            <p>Créez votre compte MarieTeam pour faciliter vos futurs traversées ! Connectez-vous et consultez votre profil pour retrouver vos données de voyage et accélerer vos réservations !</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+    <!-- Process Start -->
+
+    <!-- permet de mettre la taille aux icones -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <!-- Permet de placer le texte au milieu -->
+            <div class="text-center pb-4 wow fadeInUp" data-wow-delay="0.1s">
+                <!-- Met le texte en bleu-->
+                <h6 class="section-title bg-white text-center text-primary px-3">Comment faire ?</h6>
+                <!-- Met le texte en plus grand -->
+                <h1 class="mb-5"> En 3 étapes et c'est fini !</h1>
+            </div>
+            <!-- Permet de mettre les images côte à côte -->
+            <div class="row gy-5 gx-4 justify-content-center">
+                <!-- Permet de choisir la taille -->
+                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <!-- Permet de mettre les bordures-->
+                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
+                        <!-- Permet de mettre le texte à l'interieur du cadre -->
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
+                            <!-- Permet de mettre le "1" dans le cercle -->
+                            <i class="fa fa-globe fa-3x text-white">1</i>
+                        </div>
+                        <!-- Met le titre -->
+                        <h5 class="mt-4">Choisi ta déstination</h5>
+                        <!-- Permet de mettre les 2 barres bleu -->
+                        <hr class="w-25 mx-auto bg-primary mb-1">
+                        <hr class="w-50 mx-auto bg-primary mt-0">
+                        <!-- Met le texte-->
+                        <p class="mb-0">Choisi un port de départ et d'arrivée pour repérer le numéro de la liaison et le voyage de tes rêves n'attends plus que toi !</p>
+                    </div>
+                </div>
+                <!-- Permet de choisir la taille-->
+                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <!-- Permet de mettre les bordures-->
+                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
+                        <!-- Permet de mettre le texte à l'interieur du cadre -->
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
+                            <!-- Permet de mettre le "2" dans le cercle -->
+                            <i class="fa fa-dollar-sign fa-3x text-white">2</i>
+                        </div>
+                        <!-- met le titre -->
+                        <h5 class="mt-4">Choisis la date et l'heure </h5>
+                        <!-- Permet de mettre les 2 barres bleu -->
+                        <hr class="w-25 mx-auto bg-primary mb-1">
+                        <hr class="w-50 mx-auto bg-primary mt-0">
+                        <!-- Met le texte-->
+                        <p class="mb-0">Quand part-on, mon capitaine ? Sélectionne dans nos disponibilités le jour et l'heure de ton voyage !</p>
+                    </div>
+                </div>
+                <!-- Permet de choisir la taille-->
+                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <!-- Permet de mettre les bordures-->
+                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
+                        <!-- Permet de mettre le texte à l'interieur du cadre -->
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
+                            <!-- Permet de mettre le "3" dans le cercle -->
+                            <i class="fa fa-plane fa-3x text-white">3</i>
+                        </div>
+                        <!-- met le titre -->
+                        <h5 class="mt-4">Réserve ! </h5>
+                        <!-- Permet de mettre les 2 barres bleu -->
+                        <hr class="w-25 mx-auto bg-primary mb-1">
+                        <hr class="w-50 mx-auto bg-primary mt-0">
+                        <!-- Met le texte-->
+                        <p class="mb-0"> Tu as toutes tes données en tête ? Réserve directement depuis Horaires, après avoir selectionné l'horaire de ton choix pour le trajet de tes rêves ! </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Process END -->
+
+
+    <!-- Footer Start -->
+
+    <!-- Ce <div> crée un conteneur large (pleine largeur) pour le pied de page avec plusieurs classes CSS -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <!-- Ce div recentre le contenu à l'intérieur d'un conteneur fixe (centré) -->
+        <div class="container py-5">
+            <!-- Crée une ligne de grille Bootstrap avec un gutter (g-5) = espace entre les colonnes. -->
+            <div class="row g-5">
+                <!-- Colonne qui permet un responsive design  -->
+                <div class="col-lg-3 col-md-6">
+                    <!-- Met le titre -->
+                    <h4 class="text-white mb-3">MarieTeam</h4>
+                    <!-- Ces balises <a> sont des liens de navigation vers les différentes pages du site-->
+                    <a href="index.php">Accueil</a> <br>
+                    <a href="Vue/liaisons.html.php">Liaisons</a> <br>
+                    <a href="Vue/tarifs.html.php">Tarifs</a> <br>
+                    <a href="Vue/horaire.html.php">Horaires</a> <br>
+                    <a href="Vue/connexion.html.php"> Se connecter</a> <br>
+                    <a href="Vue/rgpd.html"> RGPD</a> <br>
+
+
+                </div>
+                <!-- Permt de placer " Nous contacter" a droite des liens -->
+                <div class="col-lg-3 col-md-6">
+                    <!--  Titre de cette section, en blanc, avec une marge en bas. -->
+                    <h4 class="text-white mb-3">Nous contacter</h4>
+                    <!-- Indique le mail sous le titre -->
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>Mariteam@voyage.com</p>
+
+                </div>
+            </div>
+        </div>
+        <!--  Ce div recentre le contenu horizontalement et lui donne une largeur limitée (centrée dans la page). -->
+        <div class="container">
+            <!--  div servant à regrouper le texte des droits d’auteur -->
+            <div class="copyright">
+             <!--  Début d’une ligne Bootstrap (grille) pour répartir le contenu en colonnes si besoin. -->
+                <div class="row">
+                    <!-- Crée une colonne qui s’adapte selon la taille de l’écran -->
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <!-- Peremt d'ecrire et d'indiquer les droits-->
+                        &copy; <a class="border-bottom" href="index.php">Mariteam</a>, All Right Reserved.
+                        Designed By Tom Lelievre, Axel Wilfart, Baptiste Royer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- JavaScript Libraries -->
+   <!-- jQuery : une bibliothèque JavaScript populaire qui simplifie la manipulation du DOM, les événements, les requêtes AJAX, etc. -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap JS : permet les fonctionnalités interactives de Bootstrap (menus déroulants, modales, carrousels…) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- WOW.js : active les animations CSS (comme fadeIn, slideIn) lorsque les éléments apparaissent à l’écran pendant le défilement. -->
+    <script src="lib/wow/wow.min.js"></script>
+    <!-- jQuery Easing : ajoute des effets de transition plus fluides et variés (accélération/décélération) lors des animations. -->
+    <script src="lib/easing/easing.min.js"></script>
+   <!-- Waypoints.js : déclenche des fonctions quand on fait défiler la page jusqu’à un certain élément -->
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <!-- Owl Carousel : permet de créer des carrousels (sliders) d’images, de témoignages, etc., facilement configurables et responsive. -->
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <!-- Tempus Dominus : une bibliothèque de sélecteurs de date et d'heure intégrée à Bootstrap.
+        moment.min.js et moment-timezone.min.js sont des dépendances pour gérer les dates et fuseaux horaires.
+        tempusdominus-bootstrap-4.min.js affiche le calendrier interactif. -->
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+<!-- Pop-up Cookies -->
+<div id="cookie-popup" class="hidden">
+<!-- Conteneur interne pour styliser le contenu (boîte blanche, ombrage, centrage, etc.). -->
+    <div class="cookie-popup-content">
+        <p>Ce site utilise des cookies pour améliorer l'expérience, conformément à notre <a href="Vue/rgpd.html" style="text-decoration-line: underline;">Politique de confidentialité.</a></p>
+        <button id="accept-cookies">Accepter</button>
+        <button id="reject-cookies">Refuser</button>
+    </div>
+</div>
+
+    <!-- Fin Pop-up cookies -->
+
+
+    <script>
+    console.log("Test script dans index.php");
+    console.log(document);
+    </script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

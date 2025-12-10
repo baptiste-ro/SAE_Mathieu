@@ -1,0 +1,17 @@
+#wrong_credential_box {
+    /* Size  */
+    height: 48px;
+
+    /* Background */
+    background: rgba(255, 0, 0, 0.4);
+
+    /* Text */
+    color: black;
+    align-content: center;
+
+    /* Padding */
+    padding: 0px 12px 0px 12px;
+
+    /* Margin */
+    margin: 0px;
+}
