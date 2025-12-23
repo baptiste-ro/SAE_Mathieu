@@ -1,33 +1,24 @@
-const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+import translate from "./translate.js";
+import date_format from "./date_format.js";
+import set_background from "./set_background.js";
+import fetch_count from "./fetch_count.js";
+
+const MONTH_NAMES = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+const DAYS = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
+
+window.app = app;
+window.MONTH_NAMES = MONTH_NAMES;
+window.DAYS = DAYS;
 
 function app() {
 	return {
 		month: '',
 		year: '',
+		nb_of_appointments: 0,
+		background: "white__",
 		no_of_days: [],
 		blankdays: [],
-		days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-
-		events: [
-			{
-				event_date: new Date(2020, 3, 1),
-				event_title: "April Fool's Day",
-				event_theme: 'blue'
-			},
-
-			{
-				event_date: new Date(2020, 3, 10),
-				event_title: "Birthday",
-				event_theme: 'red'
-			},
-
-			{
-				event_date: new Date(2020, 3, 16),
-				event_title: "Upcoming Event",
-				event_theme: 'green'
-			}
-		],
+		days: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
 		event_title: '',
 		event_date: '',
 		event_theme: 'blue',
@@ -62,42 +53,95 @@ function app() {
 			this.month = today.getMonth();
 			this.year = today.getFullYear();
 			this.datepickerValue = new Date(this.year, this.month, today.getDate()).toDateString();
+			fetch_count(this.year, this.month);
+		},
+
+		getBackground() {
+			if (this.nb_of_appointments < 4) {
+				return "white__";
+			} else if (this.nb_of_appointments < 9) {
+				return "light_yellow__";
+			} else if (this.nb_of_appointments < 14) {
+				return "orange__";
+			} else if (this.nb_of_appointments < 19) {
+				return "red_orange__";
+			} else if (this.nb_of_appointments < 23) {
+				return "red";
+			} else if (this.nb_of_appointments < 26) {
+				return "dark_red__";
+			} else {
+				return "black__";
+			}
 		},
 
 		isToday(date) {
 			const today = new Date();
 			const d = new Date(this.year, this.month, date);
-
 			return today.toDateString() === d.toDateString() ? true : false;
 		},
 
 		showEventModal(date) {
 			// open the modal
 			this.openEventModal = true;
-			this.event_date = new Date(this.year, this.month, date).toDateString();
+			this.event_date = translate(new Date(this.year, this.month, date).toDateString());
 		},
 
 		addEvent() {
-			if (this.event_title == '') {
-				return;
+			console.log(date_format(this.event_date))
+
+			const appointment_object = {
+				id: {appointmentDate: date_format(this.event_date), appointmentTime: document.querySelector('.search-bar2').value},
+				clientId: document.querySelector('.user-id').id
 			}
 
-			this.events.push({
-				event_date: this.event_date,
-				event_title: this.event_title,
-				event_theme: this.event_theme
-			});
-
-			console.log(this.events);
-
-			// clear the form data
-			this.event_title = '';
-			this.event_date = '';
-			this.event_theme = 'blue';
-
-			//close the modal
-			this.openEventModal = false;
+			console.log(JSON.stringify(appointment_object));
+			
+			fetch("/sae/appointment/add-appointment", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(appointment_object)
+			})
+			.then(answer => {
+				if (answer.ok) {
+					return answer.json();
+				} else {
+					console.error('Le fetch a posé un problème, answer n\'est pas ok.');
+				}
+			})
+			.then(result => {
+				if (result.error) {
+					window.alert("Cette horaire a déjà été réservée.");
+				} else {
+					this.openEventModal = false;
+					set_background(this.year, this.month, result.list);
+				}
+			})
 		},
+
+		prevMonth() {
+			if (this.month === 0) {
+				this.month = 11;
+				this.year--;
+			} else {
+				this.month--;
+			}
+			this.getNoOfDays();
+			fetch_count(this.year, this.month);
+		},
+
+		nextMonth() {
+			if (this.month === 11) {
+				this.month = 0;
+				this.year++;
+			} else {
+				this.month++;
+			}
+			this.getNoOfDays();
+			fetch_count(this.year, this.month);
+		},
+
 
 		getNoOfDays() {
 			let daysInMonth = new Date(this.year, this.month + 1, 0).getDate();

@@ -2,7 +2,11 @@
 import { show_stat_page } from "./admin.js";
 
 // Récupération du bouton de déconnexion
-const disconnect_button = document.querySelector('#disconnect')
+const disconnect_button = document.querySelector('#disconnect');
+
+const change_information_button = document.querySelector('.change_info');
+
+const profile_pic = document.querySelector('.profil_pic');
 
 // Ajout d'un eventListener au click sur le bouton de déconnexion, pour déconnecter l'utilisateur
 disconnect_button.addEventListener('click', (event) => {
@@ -29,3 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Appel de la fonction qui permet d'afficher l'onglet des statistiques si l'utilisateur est admin
     show_stat_page("Vue/");
 });
+
+
+
+change_information_button.addEventListener('click', (event) => {
+    event.preventDefault();
+    // fetch('/sae/profile/change_information');
+})

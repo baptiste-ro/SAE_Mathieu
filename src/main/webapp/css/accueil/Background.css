@@ -1,0 +1,31 @@
+.white__ {
+    background-color: #FFFFFF;
+}
+
+.light_yellow__ {
+    background-color: rgba(255, 255, 171, 0.75);
+}
+
+.orange__ {
+    background-color: rgba(255, 128, 0, 0.7);
+}
+
+.orange_red__ {
+    background-color: rgba(255, 80, 0, 0.7);
+}
+
+.red__ {
+    background-color: rgba(200, 0, 0, 0.7);
+}
+
+.dark_red__ {
+    background-color: rgba(100, 0, 0, 0.7);
+}
+
+.black__ {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.white_number__ {
+    color: #FFFFFF;
+}
