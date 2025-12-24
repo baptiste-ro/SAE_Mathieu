@@ -76,7 +76,7 @@ if ($result->num_rows > 0) {
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-               <!-- Pour avoir le logo et le nom de la compagnie en haut a gauche + redirection vers index.php!-->
+               <!-- Pour avoir le logo et le lastName de la compagnie en haut a gauche + redirection vers index.php!-->
                <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i><a href="../index.php">Mariteam</a></h1>
                <!-- <img src="img/logo.png" alt="Logo"> -->
 
@@ -138,7 +138,7 @@ if ($result->num_rows > 0) {
     if(isset($_GET['s']) AND !empty($_GET['s'])){ // Verifie si l'utilisateur a bien lancer sa recherche
         $recherche = htmlspecialchars($_GET['s']); // Stockage de la recherche dans une variable (ici recherche), et précaution pour éviter que l'utilisateur rentre du html dans la recherche
         // Requête preparée pour plus de sécurité (evite les failles SQL)
-        //Prépare une requête SQL pour chercher les secteurs dont le nom contient la chaîne recherchée.
+        //Prépare une requête SQL pour chercher les secteurs dont le lastName contient la chaîne recherchée.
         $stmt = $conn->prepare("SELECT Nom_Secteur FROM secteur WHERE Nom_Secteur LIKE ?");
         $searchTerm = "%".$recherche."%";
         $stmt->bind_param("s", $searchTerm);

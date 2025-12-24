@@ -47,9 +47,6 @@
                 <div class="navbar-nav ms-auto py-0">
                     <!-- Navbar pour naviguer et selectionner la page que l'ont souhaite visiter !-->
                     <a href="index.php" class="nav-item nav-link active">Accueil</a>
-                    <a href="Vue/liaisons.html.php" class="nav-item nav-link">Liaisons</a>
-                    <a href="Vue/tarifs.html.php" class="nav-item nav-link">Tarifs</a>
-                    <a href="Vue/horaire.html.php" class="nav-item nav-link">Horaires</a>
                 </div>
                 <%
                     if (!connected) {
@@ -82,8 +79,8 @@
     <form method="POST" style="background-color: #B2CCCE; padding: 12px; border-radius: 4px;">
 
             <div class="champ_mail" style="display: flex; flex-direction: column; align-items: center;">
-            <label for="username" style="color: black;">Nom d'utilisateur ou email :</label>
-            <input type="text" id="username" name="username" required>
+            <label for="email" style="color: black;">Email :</label>
+            <input type="text" id="email" name="email" required>
             </div>
 
             <br>

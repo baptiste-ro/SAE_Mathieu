@@ -1,7 +1,7 @@
 package com.saeweb.service.connexion;
 
 import com.saeweb.database.entity.connection.Users;
-import com.saeweb.database.repository.connexion.UsersRepository;
+import com.saeweb.database.repository.user.UsersRepository;
 import com.saeweb.dto.connection.ConnectionUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,8 @@ public class ConnectionServiceImpl implements ConnectionService {
     @Override
     public Users getConnection(ConnectionUser connectionUser) {
         try {
-            List<Users> usersList = usersRepository.findByUsernameOrEmail(connectionUser.getUsername());
+            System.out.println(connectionUser);
+            List<Users> usersList = usersRepository.findByEmail(connectionUser.getEmail());
             for (Users u : usersList) {
                 logger.info(u.toString());
                 if (passwordEncoder.matches(connectionUser.getPassword(), u.getPassword())) {

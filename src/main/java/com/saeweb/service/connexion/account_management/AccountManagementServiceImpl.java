@@ -1,12 +1,11 @@
 package com.saeweb.service.connexion.account_management;
 
 import com.saeweb.database.entity.connection.Users;
-import com.saeweb.database.repository.connexion.UsersRepository;
+import com.saeweb.database.repository.user.UsersRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import static com.saeweb.util.text.TextSanitizer.sanitize;
 

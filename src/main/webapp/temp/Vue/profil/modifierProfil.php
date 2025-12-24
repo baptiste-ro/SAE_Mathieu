@@ -104,7 +104,7 @@ if (!isset($_SESSION['Id_Compte'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Récupère les données envoyées par le formulaire ou vide par défaut
-    $nom = $_POST['Nom_Compte'] ?? '';
+    $lastName = $_POST['Nom_Compte'] ?? '';
     $email = $_POST['Mail_Compte'] ?? '';
     $ancien_mdp = $_POST['ancien_mdp'] ?? '';
     $nouveau_mdp = $_POST['nouveau_mdp'] ?? '';
@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Commence la requête de mise à jour
         $sql = "UPDATE compte SET Nom_Compte = ?, Mail_Compte = ?";
-        $params = [$nom, $email];
+        $params = [$lastName, $email];
         $types = "ss"; // Types des paramètres (2 strings)
 
         // Si un nouveau mot de passe est renseigné, on le hache et l'ajoute à la requête
@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close(); // Ferme la requête
 
         // Met à jour les valeurs en session
-        $_SESSION['Nom_Compte'] = $nom;
+        $_SESSION['Nom_Compte'] = $lastName;
         $_SESSION['Mail_Compte'] = $email;
 
         // Redirige vers la page profil avec succès
@@ -169,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <form method="post" onsubmit="return verifierMdp()" style="display: flex; flex-direction: column; align-items: center;">
     
     <div class="champs_modif" style="display: flex; flex-direction: column; align-items: stretch; font-size: 15px; background-color: #B2CCCE; padding: 12px; border-radius: 4px;">
-    <!-- Champ pour modifier le nom, prérempli avec le nom actuel en session -->
+    <!-- Champ pour modifier le lastName, prérempli avec le lastName actuel en session -->
      <div class="champ_nom" style="display: flex; flex-direction: column; align-items: center;">
         <label style="color: black;">Nom :</label>
         <input type="text" name="Nom_Compte" value="<?= htmlspecialchars($_SESSION['Nom_Compte'] ?? '') ?>" required><br>

@@ -96,7 +96,7 @@ if (!isset($_SESSION["Id_Compte"])) {
 
             <div class="infos-dispersés" style="display: flex; flex-direction: column; align-items: stretch; font-size: 15px; background-color: #B2CCCE; padding: 12px; border-radius: 4px;">
                 <div class="name-account">
-                    <p style="color:black; background-color: #EEEEEE; border-radius: 4px; padding:5px;">Votre nom : <?= htmlspecialchars($_SESSION['Nom_Compte'] ?? 'Non défini') ?></p>
+                    <p style="color:black; background-color: #EEEEEE; border-radius: 4px; padding:5px;">Votre lastName : <?= htmlspecialchars($_SESSION['Nom_Compte'] ?? 'Non défini') ?></p>
                 </div>
 
                 <div class="firstname-account">
@@ -112,11 +112,11 @@ if (!isset($_SESSION["Id_Compte"])) {
         <!--<h2 style="text_in_blue;">Modifier mes informations</h2>
             <form action="modifierProfil.php" method="post">
 
-                <label for="nom">Prénom :</label>
-                    <input type="text" name="nom" value="<?= htmlspecialchars($_SESSION['Prenom_Compte'] ?? '') ?>" required><br>
+                <label for="lastName">Prénom :</label>
+                    <input type="text" name="lastName" value="<?= htmlspecialchars($_SESSION['Prenom_Compte'] ?? '') ?>" required><br>
 
-                <label for="nom">Nom :</label>
-                    <input type="text" name="nom" value="<?= htmlspecialchars($_SESSION['Nom_Compte'] ?? '') ?>" required><br>
+                <label for="lastName">Nom :</label>
+                    <input type="text" name="lastName" value="<?= htmlspecialchars($_SESSION['Nom_Compte'] ?? '') ?>" required><br>
 
                 <label for="email">Email :</label>
                     <input type="email" name="email" value="<?= htmlspecialchars($_SESSION['Email_Compte'] ?? '') ?>" required><br>

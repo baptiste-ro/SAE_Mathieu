@@ -19,14 +19,23 @@ public class Users {
     @Column(name = "id")
     private Integer ID;
 
-    @Column(name = "username", length = 50)
-    private String username;
+    @Column(name = "first_name", length = 50)
+    private String firstName;
+
+    @Column(name = "last_name", length = 50)
+    private String lastName;
+
+    @Column(name = "address", length = 50)
+    private String address;
 
     @Column(name = "password", length = 200)
     private String password;
 
     @Column(name = "email", length = 50)
     private String email;
+
+    @Column(name = "role", length = 50)
+    private String role;
 
     @Column(name = "admin")
     private Boolean admin = false;
@@ -35,12 +44,20 @@ public class Users {
         return ID;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Boolean getAdmin() {
@@ -60,13 +77,44 @@ public class Users {
         return this.password;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void changeInformations(String firstName, String lastName, String password, String address) {
+        this.firstName = firstName.isEmpty() ? this.firstName : firstName;
+        this.lastName = lastName.isEmpty() ? this.lastName : lastName;
+        this.address = address.isEmpty() ? this.address : address;
+        if (!password.isEmpty()) {setPassword(password);}
+    }
+
     public boolean isEmpty() {
-        return this.username == null && this.password == null && this.email == null;
+        return this.firstName == null && this.password == null && this.email == null;
     }
 
     @Override
     public String toString() {
-        return "{\n    [Username : " + username + "]\n    [Password: " + password + "]\n    [Email: " + email + "]\n    [IsAdmin : " + admin + "]\n}";
+        return "{\n    [First name : " + firstName + "]\n    [Last name : " + lastName + "]\\n    [Password: " + password + "]\n    [Email: " + email + "]\n    [Adresse : " + address + "]\\n    [Role : " + role + "]\\n    [IsAdmin : " + admin + "]\n}";
     }
 
     @Override
@@ -78,7 +126,7 @@ public class Users {
                 Users user = (Users) obj;
 
                 return this.ID.equals(user.getID()) &&
-                        this.username.equals(user.getUsername()) &&
+                        this.firstName.equals(user.getFirstName()) &&
                         this.password.equals(user.getPassword()) &&
                         this.email.equals(user.getEmail()) &&
                         this.admin.equals(user.getAdmin());

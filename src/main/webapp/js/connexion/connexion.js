@@ -10,7 +10,7 @@ valid_form.addEventListener('click', (event) => {
     // Création d'un objet JSON qui sera envoyé au fichier connect.php
     const sender = {
         // Valeur de l'input du mail
-        username: document.querySelector('#username').value,
+        email: document.querySelector('#email').value,
         // valeur de l'input du mot de passe
         password: document.querySelector('#password').value
     }

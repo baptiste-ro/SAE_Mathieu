@@ -44,7 +44,7 @@
         <!-- Permet d'avoir la navbar en haut a droite -->
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <!-- Pour avoir le logo et le nom de la compagnie en haut a gauche !-->
-            <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i><a href="index.php" class="__ spring-title">Mariteam</a></h1>
+            <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i><a href="index.php" class="__spring-title">Mariteam</a></h1>
 
 
             <!-- Navbar !-->
@@ -59,7 +59,7 @@
                     if (!connected) {
                         out.println("<a href='Connexion.jsp' class='btn btn-primary rounded-pill py-2 px-4'>Se connecter</a>");
                     } else {
-                        out.println("<a id='" + user.getID() + "' href='Profil.jsp' class='btn btn-primary rounded-pill py-2 px-4 user-id'>" + user.getUsername() + "</a>");
+                        out.println("<a id='" + user.getID() + "' href='Profil.jsp' class='btn btn-primary rounded-pill py-2 px-4 user-id'>" + user.getFirstName() + "</a>");
                     }
                 %>
             </div>

@@ -1,5 +1,8 @@
-const username_field = document.querySelector("#username");
+const first_name_field = document.querySelector("#first_name");
+const last_name_field = document.querySelector("#last_name");
+const address_field = document.querySelector("#address");
 const email_field = document.querySelector("#email");
+const role_field = document.querySelector('input[name="role"]:checked');
 const pwd_field = document.querySelector("#password");
 const confirm_pwd_field = document.querySelector("#confirm_pwd");
 
@@ -10,11 +13,16 @@ validate_button.addEventListener('click', (event) => {
     if (pwd_field.value == confirm_pwd_field.value) {
 
         const form_body = {
-                username: username_field.value,
+                firstName: first_name_field.value,
+                lastName: last_name_field.value,
                 password: pwd_field.value,
+                address: address_field.value,
                 email: email_field.value,
-                admin: true
+                role: role_field.value,
+                admin: false
             }
+
+        console.log(form_body);
             
         fetch('connexion/account_management/creation', {
             method: "POST",

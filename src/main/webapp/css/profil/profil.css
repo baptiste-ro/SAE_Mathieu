@@ -1,14 +1,35 @@
 .inputfile {
+	/* Size */
 	width: 0.1px;
 	height: 0.1px;
+
+	/* Opacity */
 	opacity: 0;
 	overflow: hidden;
+
+	/* Position */
 	position: absolute;
 	z-index: -1;
 }
 
 .profil_pic {
+	/* Image handling */
     object-fit: cover;
+
+	/* Size */
     width: 100px;
     height: 100px;
+}
+
+.validate {
+	/* Text */
+	text-align: center;
+	color: black;
+	user-select: none;
+
+	/* Margin */
+	margin: 0px;
+
+	/* Cursor */
+	cursor: pointer;
 }

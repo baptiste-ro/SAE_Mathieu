@@ -11,7 +11,7 @@
     // Vérifier si le formulaire est soumis en méthode POST
     // Cela évite d’exécuter le code lors d’un simple chargement de page.
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $nom = htmlspecialchars($_POST['Nom_Compte']);
+        $lastName = htmlspecialchars($_POST['Nom_Compte']);
         $prenom = htmlspecialchars($_POST['Prenom_Compte']);
         $mail = htmlspecialchars($_POST['Mail_Compte']);
         $mot_de_passe = $_POST['Mdp_Compte']; // On ne fait pas htmlspecialchars ici sur le mot de passe, car il faut le hacher brut
@@ -29,7 +29,7 @@
 
         // Préparer la requête d’insertion avec le mot de passe haché
         $stmt = $conn->prepare("INSERT INTO compte (Mail_Compte, Nom_Compte, Prenom_Compte, Mdp_Compte) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $mail, $nom, $prenom, $mot_de_passe_hache);
+        $stmt->bind_param("ssss", $mail, $lastName, $prenom, $mot_de_passe_hache);
         
         //Tente d’exécuter la requête préparée (insertion des données utilisateur dans la base).
         //Si elle réussit (pas d’erreur SQL, champs valides, email unique, etc.), on continue dans le if

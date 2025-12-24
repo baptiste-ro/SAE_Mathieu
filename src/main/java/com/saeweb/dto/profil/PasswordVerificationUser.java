@@ -1,10 +1,15 @@
-package com.saeweb.dto.connection;
+package com.saeweb.dto.profil;
 
-public class ConnectionUser {
+public class PasswordVerificationUser {
     private String email;
     private String password;
 
-    public ConnectionUser() {
+    public PasswordVerificationUser(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public PasswordVerificationUser() {
     }
 
     public String getEmail() {
@@ -23,8 +28,7 @@ public class ConnectionUser {
         this.password = password;
     }
 
-    @Override
     public String toString() {
-        return "{\n    [Email : " + email + "]\n    [Password: " + password + "]\n}";
+        return "{\n    email: " + this.email + "\n    " + this.password + "\n}";
     }
 }

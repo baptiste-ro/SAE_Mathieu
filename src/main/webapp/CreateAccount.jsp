@@ -73,15 +73,27 @@
     <div class="container" style="color: black; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center;">
         <form action="" method="POST" style="background-color: #B2CCCE; padding: 12px; border-radius: 4px;">
 
-             <div class="champ_prenom" style="color: black;display: flex; flex-direction: column; align-items: center;">
-                <label for="username">Nom d'Utilisateur :</label>
-                <input type="text" id="username" name="username" required>
+            <div class="champ_prenom" style="color: black;display: flex; flex-direction: column; align-items: center;">
+                <label for="username">Prenom :</label>
+                <input type="text" id="first_name" name="first_name" required>
             </div>
             <br>
 
-            <div class="champ_mail" style="color: black;display: flex; flex-direction: column; align-items: center;">
-                <label for="email">Email :</label>
-                <input type="mail" id="email" name="email" required>
+            <div class="champ_nom" style="color: black;display: flex; flex-direction: column; align-items: center;">
+                <label for="username">Nom :</label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+            <br>
+
+            <div class="champ_email" style="color: black;display: flex; flex-direction: column; align-items: center;">
+                <label for="username">Email :</label>
+                <input type="mail" id="email" name="email_field" required>
+            </div>
+            <br>
+
+            <div class="champ_adresse" style="color: black;display: flex; flex-direction: column; align-items: center;">
+                <label for="email">Adresse :</label>
+                <input type="text" id="address" name="address_field" required>
             </div>
             <br>
 
@@ -91,13 +103,28 @@
             </div>
             <br>
 
-            <div class="champ_mdp" style="color: black; display: flex; flex-direction: column; align-items: center;">
+            <div class="champ_mdp" style="color: black; display: flex; flex-direction: column; align-items: center;height:52.3px">
                 <label for="password">Confirmer le mot de passe :</label>
                 <input type="password" id="confirm_pwd" name="confirm_pwd" required><br>
             </div>
+            <br>
 
+            <fieldset id="role_field">
+                <div class="champ_mdp" style="color: black; display: flex; flex-direction: column; align-items: center;">
+                    <div style="display:flex;flex-direction:row;width:100%">
+                        <div style="display:flex;flex-direction:column;width:50%">
+                            <label for="client" style="text-align:center">Client</label>
+                            <input type="radio" id="client" value="client" name="role" required checked/>
+                        </div>
 
-
+                        <div style="display:flex;flex-direction:column;width:50%">
+                            <label for="pro" style="text-align:center">Professionnel</label>
+                            <input type="radio" id="pro" value="pro" name="role"/>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <br>
 
             <button id="validate" style="color: white; background-color: #4D7EDD; border-radius: 4px; padding:5px; margin-right: 5px;">Créer mon compte</button>
             <button type="reset" style="color: white; background-color: #4D7EDD; border-radius: 4px; padding:5px; margin-right: 5px;">Tout effacer</button> <br> <br>

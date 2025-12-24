@@ -27,8 +27,8 @@
 3. Modèle conceptuel de données (MCD simplifié)
 
     - Entités et associations :
-        - User (id_user, nom, prenom, email, mdp)
-        - Docteur (id_docteur, nom, prenom, specialite, email, mdp)
+        - User (id_user, lastName, prenom, email, mdp)
+        - Docteur (id_docteur, lastName, prenom, specialite, email, mdp)
         - Créneau (id_creneau, id_docteur, date_heure_debut, date_heure_fin, est_libre, capacite_max)
         - RendezVous (id_rdv, id_user, id_creneau, statut, date_reservation)
     - Relations :

@@ -95,7 +95,7 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-transparent" id="name" placeholder="Your Name">
-                                        <label for="name">Votre nom</label>
+                                        <label for="name">Votre lastName</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
