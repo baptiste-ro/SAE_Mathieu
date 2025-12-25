@@ -87,15 +87,12 @@ function app() {
 		},
 
 		addEvent() {
-			console.log(date_format(this.event_date))
 
 			const appointment_object = {
 				id: {appointmentDate: date_format(this.event_date), appointmentTime: document.querySelector('.search-bar2').value},
 				clientId: document.querySelector('.user-id').id
 			}
-
-			console.log(JSON.stringify(appointment_object));
-			
+						
 			fetch("/sae/appointment/add-appointment", {
 				method: 'POST',
 				headers: {

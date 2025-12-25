@@ -54,7 +54,7 @@ function verifierMdp() {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(sender)
+                        body: JSON.stringify(sender2)
                     })
                     .then(answer => {
                         if (answer.ok) {

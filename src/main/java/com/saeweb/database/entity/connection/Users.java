@@ -102,9 +102,9 @@ public class Users {
     }
 
     public void changeInformations(String firstName, String lastName, String password, String address) {
-        this.firstName = firstName.isEmpty() ? this.firstName : firstName;
-        this.lastName = lastName.isEmpty() ? this.lastName : lastName;
-        this.address = address.isEmpty() ? this.address : address;
+        this.firstName = firstName == null || firstName.isEmpty() ? this.firstName : firstName;
+        this.lastName = lastName == null || lastName.isEmpty() ? this.lastName : lastName;
+        this.address = address == null || address.isEmpty() ? this.address : address;
         if (!password.isEmpty()) {setPassword(password);}
     }
 

@@ -44,7 +44,7 @@
         <!-- Permet d'avoir la navbar en haut a droite -->
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <!-- Pour avoir le logo et le nom de la compagnie en haut a gauche !-->
-            <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i><a href="index.php" class="__spring-title">Mariteam</a></h1>
+            <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>Mariteam</h1>
 
 
             <!-- Navbar !-->

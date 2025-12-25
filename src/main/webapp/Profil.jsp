@@ -9,6 +9,13 @@
     boolean connected = (user != null) ? true : false;
 %>
 
+<%
+    if (!connected) {
+        String redirectURL = "Connexion.jsp";
+        response.sendRedirect(redirectURL);
+    }
+%>
+
 <head>
 
 </head>
