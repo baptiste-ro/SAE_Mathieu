@@ -1,6 +1,6 @@
 package com.saeweb.service.connexion.account_management;
 
-import com.saeweb.database.entity.connection.Users;
+import com.saeweb.database.entity.users.Users;
 import com.saeweb.database.repository.user.UsersRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html; charset=UTF-8" import="tools.*" %>
 <%@ page errorPage="erreur.jsp" %>
-<%@ page import="com.saeweb.database.entity.connection.Users" %>
+<%@ page import="com.saeweb.database.entity.users.Users" %>
 <%
     Users user = (Users) session.getAttribute("currentUser");
     boolean connected = (user != null) ? true : false;

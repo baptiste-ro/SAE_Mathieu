@@ -12,7 +12,7 @@
 	z-index: -1;
 }
 
-.profil_pic {
+.profil_pic, .preview_pfp {
 	/* Image handling */
     object-fit: cover;
 

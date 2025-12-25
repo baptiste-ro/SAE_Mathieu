@@ -2,6 +2,7 @@
 <html lang="fr">
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html; charset=UTF-8" import="tools.*" %>
+<%@ page import="com.saeweb.database.entity.users.Users" %>
 <%@ page errorPage="erreur.jsp" %>
 <%
     Boolean login = (Boolean) session.getAttribute("login");

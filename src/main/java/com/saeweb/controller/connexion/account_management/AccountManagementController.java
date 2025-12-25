@@ -1,6 +1,6 @@
 package com.saeweb.controller.connexion.account_management;
 
-import com.saeweb.database.entity.connection.Users;
+import com.saeweb.database.entity.users.Users;
 import com.saeweb.service.connexion.account_management.AccountManagementServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/connexion/account_management")
+@RequestMapping("/connection/account_management")
 public class AccountManagementController {
 
     @Autowired

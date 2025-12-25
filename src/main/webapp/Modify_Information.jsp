@@ -3,8 +3,8 @@
 
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html; charset=UTF-8" import="tools.*" %>
+<%@ page import="com.saeweb.database.entity.users.Users" %>
 <%@ page errorPage="erreur.jsp" %>
-<%@ page import="com.saeweb.database.entity.connection.Users" %>
 <%
     Users user = (Users) session.getAttribute("currentUser");
     boolean connected = (user != null) ? true : false;
@@ -38,6 +38,7 @@
 
     <script type="module" src="js/profile/modify_information/modify_information.js"></script>
     <script type="module" src="js/accueil/images_management.js" defer></script>
+    <script type="module" src="js/connexion/disconnection.js" defer></script>
 </head>
 
 <body>
@@ -61,7 +62,7 @@
                     <!-- Navbar pour naviguer et selectionner la page qu'on souhaite visiter !-->
                         <a href="Accueil.jsp" class="nav-item nav-link ">Accueil</a>
                 </div>
-                <a href="deconnect.php" style="background-color: #e36355;border-color: #e36355;" class="btn btn-primary rounded-pill py-2 px-4">Se déconnecter</a>
+                <p style="background-color: #e36355;border-color: #e36355;" class="btn btn-primary rounded-pill py-2 px-4" id="disconnect">Se déconnecter</p>
 
           </div>
         </nav>

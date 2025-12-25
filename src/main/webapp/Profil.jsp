@@ -2,8 +2,8 @@
 <html lang="fr">
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html; charset=UTF-8" import="tools.*" %>
+<%@ page import="com.saeweb.database.entity.users.Users" %>
 <%@ page errorPage="erreur.jsp" %>
-<%@ page import="com.saeweb.database.entity.connection.Users" %>
 <%
     Users user = (Users) session.getAttribute("currentUser");
     boolean connected = (user != null) ? true : false;
@@ -41,11 +41,13 @@
 
     <!-- Lien avec le css -->
     <link href="css/style.css" rel="stylesheet">
-
 	<link href="css/accueil/Background.css" rel="stylesheet">
     <link href="css/profil/profil.css" rel="stylesheet">
+    <link href="css/horaire/horaire.css" rel="stylesheet">
 
     <script type="module" src="js/accueil/images_management.js" defer></script>
+    <script type="module" src="js/connexion/disconnection.js" defer></script>
+    <script type="module" src="js/profile/profile.js" defer></script>
 </head>
 
 <body>
@@ -65,7 +67,7 @@
                     <!-- Navbar pour naviguer et selectionner la page qu'on souhaite visiter !-->
                         <a href="../index.php" class="nav-item nav-link ">Accueil</a>
                 </div>
-                <a style="background-color: #e36355;border-color: #e36355;" class="btn btn-primary rounded-pill py-2 px-4" id="disconnect">Se déconnecter</a>
+                <p style="background-color: #e36355;border-color: #e36355;" class="btn btn-primary rounded-pill py-2 px-4" id="disconnect">Se déconnecter</p>
 
           </div>
         </nav>
@@ -88,14 +90,35 @@
     </div>
     <!-- Navbar & Hero End -->
 
+    <div class="background_popup hidden">
+        <div class="popup" id="log">
+            <form method="post" enctype="multipart/form-data" action="/sae/image/upload" id="pfp_form" style="width:100%;display: flex;flex-flow: column;align-items: center;">
+                <br>
+                <h1 style="text-align: center;">Changer de photo de profil</h1>
+                <br>
+                <p style="margin:0px">Voulez-vous sélectionner cette image comme photo de profil ?</p>
+                <br>
+                <input type="file" style="display:none"/>
+                <div style="padding:20px;display:flex;justify-content:center">
+                    <img src="" alt="image-profil" class="preview_pfp" style="height:100px; width:100px;border-radius:100%;cursor:pointer">
+                </div>
+                <br>
+                <div style="display:flex; flex-flow:row; justify-content: space-between; margin-bottom:1rem" bis_skin_checked="1">
+                    <input type="submit" name="pfp_file" id="pfp_file" style="display:none" />
+                    <label class="btn btn-outline-light w-100 py-3" for="pfp_file" style="width: 48%;max-width: 100%;background-color: rgb(0 255 18 / 25%);margin-left:0px; transition: 0s;margin-bottom:16px">Valider</label>
+                    <p class="btn btn-outline-light w-100 py-3" id="cancel" style="width:48%;max-width: 100%;background-color: rgb(255 0 0 / 25%); transition: 0s">Annuler</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
    
     <div class="informations_compte" style="display: flex; flex-direction: column; align-items: center;">
            
         <div class="infos-regroupés" style="display: flex;margin-bottom:10px">
-
-            <div style="display: flex; flex-direction: column; align-items: flex-start;margin-right:25px;">
+            <div style="display: flex; flex-direction: column; justify-content:center; align-items: flex-start;" id="pfp_div">
                 <input type="file" name="file" id="file" class="inputfile" style="border-radius:100%" />
-                <label for="file" style="border-radius:100%"><img src="img/index/ajout_horaire.jpg" alt="image-profil" class="profil_pic" style="height:100px; width:100px;border-radius:100%;cursor:pointer"></label>
+                <label for="file" style="border-radius:100%"><img src="" alt="image-profil" class="profil_pic" id="profil_pic" style="height:100px; width:100px;border-radius:100%;cursor:pointer"></label>
             </div>
         </div>
         <div class="infos-dispersés" style="display: flex; flex-direction: column; align-items: stretch; font-size: 15px; background-color: #B2CCCE; padding: 12px; border-radius: 4px;">

@@ -1,6 +1,6 @@
 package com.saeweb.database.repository.user;
 
-import com.saeweb.database.entity.connection.Users;
+import com.saeweb.database.entity.users.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

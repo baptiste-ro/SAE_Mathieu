@@ -1,4 +1,4 @@
-package com.saeweb.database.entity.connection;
+package com.saeweb.database.entity.users;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -39,6 +39,9 @@ public class Users {
 
     @Column(name = "admin")
     private Boolean admin = false;
+
+    @Column(name = "pfp_id")
+    private String profilePicture;
 
     public Integer getID() {
         return ID;
@@ -101,6 +104,14 @@ public class Users {
         this.role = role;
     }
 
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     public void changeInformations(String firstName, String lastName, String password, String address) {
         this.firstName = firstName == null || firstName.isEmpty() ? this.firstName : firstName;
         this.lastName = lastName == null || lastName.isEmpty() ? this.lastName : lastName;
@@ -114,7 +125,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "{\n    [First name : " + firstName + "]\n    [Last name : " + lastName + "]\\n    [Password: " + password + "]\n    [Email: " + email + "]\n    [Adresse : " + address + "]\\n    [Role : " + role + "]\\n    [IsAdmin : " + admin + "]\n}";
+        return "{\n    [First name : " + firstName + "]\n    [Last name : " + lastName + "]\\n    [Password: " + password + "]\n    [Email: " + email + "]\n    [Adresse : " + address + "]\\n    [Role : " + role + "]\\n    [ProfilPictureID : " + profilePicture + "]\\n    [IsAdmin : " + admin + "]\n}";
     }
 
     @Override

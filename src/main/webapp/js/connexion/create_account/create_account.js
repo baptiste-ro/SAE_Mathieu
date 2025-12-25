@@ -19,12 +19,13 @@ validate_button.addEventListener('click', (event) => {
                 address: address_field.value,
                 email: email_field.value,
                 role: role_field.value,
-                admin: false
+                admin: false,
+                profilePicture: "default.png"
             }
 
         console.log(form_body);
             
-        fetch('connexion/account_management/creation', {
+        fetch('connection/account_management/creation', {
             method: "POST",
             headers: {
             'Content-type': 'application/json'

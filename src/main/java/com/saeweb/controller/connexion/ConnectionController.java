@@ -1,10 +1,11 @@
 package com.saeweb.controller.connexion;
 
-import com.saeweb.database.entity.connection.Users;
+import com.saeweb.database.entity.users.Users;
 import com.saeweb.dto.connection.ConnectionUser;
 import com.saeweb.service.connexion.ConnectionServiceImpl;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,7 +25,7 @@ public class ConnectionController {
     }
 
     @PostMapping("/connection")
-    public String connexion(@RequestBody ConnectionUser user, HttpSession session) {
+    public String connection(@RequestBody ConnectionUser user, HttpSession session) {
         Users currentUser = connectionService.getConnection(user);
         if (!currentUser.isEmpty()) {
             session.setAttribute("currentUser", currentUser);
@@ -36,5 +37,13 @@ public class ConnectionController {
             session.setAttribute("login", false);
             return "Connexion.jsp";
         }
+    }
+
+    @GetMapping("/disconnect")
+    public String disconnection(HttpSession session) {
+        ClassPathResource cp = new ClassPathResource(".");
+        System.out.println("Current path : " + cp.getPath() + "\n");
+        session.removeAttribute("currentUser");
+        return "Accueil.jsp";
     }
 }

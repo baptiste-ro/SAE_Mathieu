@@ -1,9 +1,10 @@
 package com.saeweb.service.profil;
 
-import com.saeweb.database.entity.connection.Users;
+import com.saeweb.database.entity.users.Users;
 import com.saeweb.database.repository.user.UsersRepository;
 import com.saeweb.dto.profil.PasswordVerificationUser;
 import com.saeweb.dto.profil.ProfileUser;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,7 +15,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Autowired
     private UsersRepository repository;
 
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
     public Users modifyInformations(ProfileUser user) {
@@ -31,5 +32,20 @@ public class ProfileServiceImpl implements ProfileService {
         System.out.println("Verification user : " + user);
         Users u = repository.findByEmail(user.getEmail()).get(0);
         return passwordEncoder.matches(user.getPassword(), u.getPassword());
+    }
+
+    @Override
+    public void modifyProfilePicture(String pictureID, HttpSession session) {
+        Users u = repository.findByEmail(((Users) session.getAttribute("currentUser")).getEmail()).get(0);
+        System.out.println("User found : " + u);
+        u.setProfilePicture(pictureID);
+        repository.save(u);
+    }
+
+    @Override
+    public String getProfilePictureID(HttpSession session) {
+        Users u = repository.findByEmail(((Users) session.getAttribute("currentUser")).getEmail()).get(0);
+        System.out.println("User found for profile Picture : " + u);
+        return u.getProfilePicture();
     }
 }

@@ -1,6 +1,6 @@
 package com.saeweb.service.connexion;
 
-import com.saeweb.database.entity.connection.Users;
+import com.saeweb.database.entity.users.Users;
 import com.saeweb.dto.connection.ConnectionUser;
 
 public interface ConnectionService {
