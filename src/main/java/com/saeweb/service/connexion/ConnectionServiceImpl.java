@@ -29,7 +29,7 @@ public class ConnectionServiceImpl implements ConnectionService {
     public Users getConnection(ConnectionUser connectionUser) {
         try {
             System.out.println(connectionUser);
-            List<Users> usersList = usersRepository.findByEmail(connectionUser.getEmail());
+            List<Users> usersList = usersRepository.findListByEmail(connectionUser.getEmail());
             for (Users u : usersList) {
                 logger.info(u.toString());
                 if (passwordEncoder.matches(connectionUser.getPassword(), u.getPassword())) {

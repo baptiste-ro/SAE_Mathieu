@@ -3,6 +3,7 @@ package com.saeweb.service.appointment.save;
 import com.saeweb.database.entity.appointment.Appointment;
 import com.saeweb.database.repository.appointment.AppointmentRepository;
 import com.saeweb.dto.date.Month;
+import com.saeweb.service.mailto.MailSenderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,9 @@ public class SaveAppointmentServiceImpl implements SaveAppointmentService{
 
     @Autowired
     private AppointmentRepository repository;
+
+    @Autowired
+    private MailSenderServiceImpl mailSender;
 
     @Override
     public Month saveAppointment(Appointment appointment) {
@@ -21,6 +25,7 @@ public class SaveAppointmentServiceImpl implements SaveAppointmentService{
             } else {
                 System.out.println("\nAucun rendez-vous au même ID n'a été trouvé.\n");
                 repository.save(appointment);
+                mailSender.sendMail(appointment);
                 return new Month(appointment.getId().getAppointmentDate());
             }
         } catch (Exception e) {

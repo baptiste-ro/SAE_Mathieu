@@ -125,7 +125,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "{\n    [First name : " + firstName + "]\n    [Last name : " + lastName + "]\\n    [Password: " + password + "]\n    [Email: " + email + "]\n    [Adresse : " + address + "]\\n    [Role : " + role + "]\\n    [ProfilPictureID : " + profilePicture + "]\\n    [IsAdmin : " + admin + "]\n}";
+        return "{\n    [First name : " + firstName + "]\n    [Last name : " + lastName + "]\n    [Password: " + password + "]\n    [Email: " + email + "]\n    [Adresse : " + address + "]\n    [Role : " + role + "]\n    [ProfilPictureID : " + profilePicture + "]\n    [IsAdmin : " + admin + "]\n}";
     }
 
     @Override

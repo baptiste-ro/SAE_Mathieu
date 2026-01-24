@@ -20,7 +20,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public Users modifyInformations(ProfileUser user) {
         System.out.println("Profile User : " + user);
-        Users u = repository.findByEmail(user.getEmail()).get(0);
+        Users u = repository.findListByEmail(user.getEmail()).get(0);
         System.out.println("User found : " + u);
         u.changeInformations(user.getFirstName(), user.getLastName(), user.getPassword(), user.getAddress());
         repository.save(u);
@@ -30,13 +30,13 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public boolean verifyPassword(PasswordVerificationUser user) {
         System.out.println("Verification user : " + user);
-        Users u = repository.findByEmail(user.getEmail()).get(0);
+        Users u = repository.findListByEmail(user.getEmail()).get(0);
         return passwordEncoder.matches(user.getPassword(), u.getPassword());
     }
 
     @Override
     public void modifyProfilePicture(String pictureID, HttpSession session) {
-        Users u = repository.findByEmail(((Users) session.getAttribute("currentUser")).getEmail()).get(0);
+        Users u = repository.findListByEmail(((Users) session.getAttribute("currentUser")).getEmail()).get(0);
         System.out.println("User found : " + u);
         u.setProfilePicture(pictureID);
         repository.save(u);
@@ -44,7 +44,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public String getProfilePictureID(HttpSession session) {
-        Users u = repository.findByEmail(((Users) session.getAttribute("currentUser")).getEmail()).get(0);
+        Users u = repository.findListByEmail(((Users) session.getAttribute("currentUser")).getEmail()).get(0);
         System.out.println("User found for profile Picture : " + u);
         return u.getProfilePicture();
     }

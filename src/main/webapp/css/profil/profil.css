@@ -33,3 +33,13 @@
 	/* Cursor */
 	cursor: pointer;
 }
+
+.your_appointments {
+	/* Text */
+	font-size: xx-large;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+
+	/* Padding */
+	padding: 2rem 0px 0px 0px;
+}

@@ -14,6 +14,7 @@ function app() {
 	return {
 		month: '',
 		year: '',
+		dayNumber: '',
 		nb_of_appointments: 0,
 		background: "white__",
 		no_of_days: [],
@@ -84,6 +85,7 @@ function app() {
 			// open the modal
 			this.openEventModal = true;
 			this.event_date = translate(new Date(this.year, this.month, date).toDateString());
+			this.dayNumber = date;
 		},
 
 		addEvent() {
@@ -139,6 +141,26 @@ function app() {
 			fetch_count(this.year, this.month);
 		},
 
+		prevDay() {
+			if (this.dayNumber == 1) {
+				this.prevMonth();
+				this.dayNumber = new Date(this.year, this.month + 1, 0).getDate();
+			} else {
+				this.dayNumber = this.dayNumber - 1;
+			}
+			this.event_date = translate(new Date(this.year, this.month, this.dayNumber).toDateString());
+		},
+
+		nextDay() {
+			if (this.dayNumber == new Date(this.year, this.month + 1, 0).getDate()) {
+				this.nextMonth();
+				this.dayNumber = 1;
+			} else {
+				this.dayNumber = this.dayNumber + 1;
+			}
+			this.event_date = translate(new Date(this.year, this.month, this.dayNumber).toDateString());
+		},
+
 
 		getNoOfDays() {
 			let daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
@@ -157,6 +179,9 @@ function app() {
 
 			this.blankdays = blankdaysArray;
 			this.no_of_days = daysArray;
+		},
+
+		showSelectedDay() {
 		}
 	}
 }

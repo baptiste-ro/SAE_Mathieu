@@ -179,6 +179,26 @@
 
 					<h2 class="font-bold text-2xl mb-6 text-gray-800 border-b pb-2">Prenez rendez-vous</h2>
 
+                    <%-- <div class="border rounded-lg px-1" style="padding-top: 2px;">
+						<button
+							type="button"
+							class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center"
+							@click="prevDay()">
+							<svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+							</svg>
+						</button>
+						<div class="border-r inline-flex h-6"></div>
+						<button
+							type="button"
+							class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1"
+							@click="nextDay()">
+							<svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+							</svg>
+						</button>
+					</div> --%>
+
 					<div class="mb-4">
 						<label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Horaire</label>
 						<select type="text" class="form-control search-bar2" placeholder="Votre Traversee" style="border-radius: 20px 0 0 20px;">
