@@ -1,6 +1,35 @@
 <html>
     <head>
         <link href="test.css" rel="stylesheet">
+        <!-- Indique l'encodage des caractères utilisé par la page, ici UTF-8, ce qui permet d'afficher correctement des caractères spéciaux comme les accents français (é, è, à...) -->
+        <meta charset="utf-8">
+        <!-- Définit le titre de la page, affiché dans l’onglet du navigateur ou dans les résultats de recherche. -->
+        <title></title>
+        <!-- Rend la page responsive. -->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+
+        <!-- Permet de faire apparaitre les elements progressivement -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+        <link rel="dns-prefetch" href="//unpkg.com" />
+        <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+
+
+        <!-- Lien avec le css -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Lien avec le css -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <link href="css/accueil/Background.css" rel="stylesheet">
+
+        <script type="module" src="js/accueil/index.js" defer></script>
+        <script type="module" src="js/accueil/images_management.js" defer></script>
+        <script type="module" src="js/accueil/calendar/calendar.js"></script>
     </head>
     <body>        
         <div class="daily_calendar">
@@ -104,5 +133,69 @@
                 </div>
             </div>
         </div>
+        <div style=" background-color: rgba(0, 0, 0, 0.8)" class="fixed z-40 top-0 right-0 left-0 bottom-0 h-full w-full" x-show.transition.opacity="openEventModal">
+			<div class="p-4 max-w-xl mx-auto relative absolute left-0 right-0 mt-24">
+				<div class="shadow absolute right-0 top-0 w-10 h-10 rounded-full bg-white text-gray-500 hover:text-gray-800 inline-flex items-center justify-center cursor-pointer"
+					x-on:click="openEventModal = !openEventModal"
+					style="z-index: 1;top: 50px;">
+					<svg class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<path
+							d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z" />
+					</svg>
+				</div>
+
+				<div class="shadow w-full rounded-lg bg-white w-full block" style="position: relative;top: 50px;padding: 1rem 2rem 1rem 2rem;">
+                    <h2 class="font-bold text-2xl mb-6 text-gray-800 border-b pb-2 center">Détail du rendez-vous</h2>
+
+                    <div class="border rounded-lg px-1 switch-day-button">
+						<button
+							type="button"
+							class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center"
+							@click="prevDay()">
+							<svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+							</svg>
+						</button>
+						<div class="border-r inline-flex h-6"></div>
+						<button
+							type="button"
+							class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1"
+							@click="nextDay()">
+							<svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+							</svg>
+						</button>
+					</div>
+
+                    <div class="detail">
+                        <br>
+                        <div class="line">
+                            <h2 class="border-b detail-key" style="width: 9%;">Date :</h2>
+                            <h2 class="detail-value" style="width: 89%;">dd/MM/yyyy</h2>
+                        </div>
+                        <br>
+                        <div class="line">
+                            <h2 class="border-b detail-key" style="width: 12%;">Heure :</h2>
+                            <h2 class="detail-value" style="width: 89%;">hh:mm</h2>
+                        </div>
+                        <br>
+                        <div class="line">
+                            <h2 class="border-b detail-key" style="width: 22%;">Professionnel : </h2>
+                            <h2 class="detail-value" style="width: 76%;">Mr PotDeFleur</h2>
+                        </div>
+                        <br>
+                        <div class="line">
+                            <h2 class="full_line detail-key" style="width: 100%;"></h2>
+                        </div>
+                        <br>
+                        <div class="line center-content">
+                            <button type="button" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 border border-gray-700 rounded-lg shadow-sm" @click="addEvent()">
+                                Annuler le rendez-vous
+                            </button>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
     </body>
 </html>

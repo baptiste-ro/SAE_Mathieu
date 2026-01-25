@@ -44,6 +44,7 @@
 	<link href="css/accueil/Background.css" rel="stylesheet">
     <link href="css/profil/profil.css" rel="stylesheet">
     <link href="css/horaire/horaire.css" rel="stylesheet">
+    <link href="css/profil/day_calendar.css" rel="stylesheet">
 
     <script type="module" src="js/accueil/images_management.js" defer></script>
     <script type="module" src="js/connexion/disconnection.js" defer></script>
@@ -172,8 +173,8 @@
         <div>
             <%-- Month view --%>
             <h1 class="your_appointments">Vos rendez-vous</h1>
-            <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
-                <div class="container mx-auto px-4 py-2 md:py-24" style="padding-top:2rem">
+            <div x-data="app()" x-init="[initDate(), getNoOfDays()]" class="elevator-calendar monthly-active calendar-container" x-cloak>
+                <div class="monthly_calendar container mx-auto px-4 py-2 md:py-24 top-half m-active" style="padding-top:2rem">
 
                 <!-- <div class="font-bold text-gray-800 text-xl mb-4">
                     Schedule Tasks
@@ -228,7 +229,7 @@
                                 <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
                                     <div style="width: 14.28%; height: 120px" class="px-4 pt-2 border-r border-b relative cursor-pointer calendar-date"
                                         :data-date="date"
-                                        @click="showEventModal(date)">
+                                        @click="switchOnCalendar(date)">
                                         <div
                                             x-text="date"
                                             class="inline-flex w-6 h-6 items-center justify-center text-center leading-none rounded-full transition ease-in-out duration-100"
@@ -240,123 +241,205 @@
                         </div>
                     </div>
                 </div>
-
-                    <!-- Modal -->
-                    <div style=" background-color: rgba(0, 0, 0, 0.8)" class="fixed z-40 top-0 right-0 left-0 bottom-0 h-full w-full" x-show.transition.opacity="openEventModal">
-                        <div class="p-4 max-w-xl mx-auto relative absolute left-0 right-0 mt-24">
-                            <div class="shadow absolute right-0 top-0 w-10 h-10 rounded-full bg-white text-gray-500 hover:text-gray-800 inline-flex items-center justify-center cursor-pointer"
-                                x-on:click="openEventModal = !openEventModal"
-                                style="z-index: 1;top: 50px;">
-                                <svg class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path
-                                        d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z" />
+                <div class="daily_calendar d-off">
+                    <div style="display: flex;flex-direction: column;">
+                        <input id="date-title" class="unselectable bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" x-model="event_date" onfocus="this.blur()" readonly>
+                        <div class="border rounded-lg px-1 switch-day-button" id="main-day-switch">
+                            <button
+                                type="button"
+                                class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center"
+                                @click="prevDay()">
+                                <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                                 </svg>
+                            </button>
+                            <div class="border-r inline-flex h-6"></div>
+                            <button
+                                type="button"
+                                class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1"
+                                @click="nextDay()">
+                                <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div style="display: flex;">
+                            <div class="back-button-container">
+                                <button class="back-button" @click="switchOffCalendar()">
+                                    <svg height="40px" width="40px" viewBox="-7 -1.5 35 35">
+                                        <g id="SVGRepo_iconCarrier"> 
+                                            <path fill="#EEEEEE" stroke-width="1" d="M10,25 L2.5,17.5 Q0,15 2.5,12.5 L10,5 C12.5,2.5 15,5 12.5,7.5 L6.25,13.75 Q5,15 6.25,16.25 L12.5,22.5 C15,25 12.5,27.5 10,25"></path>
+                                        </g>
+                                    </svg>
+                                </button>
                             </div>
+                            <div style="display: flex;border: 1px solid black;padding: 20px 20px 20px 10px;border-radius: 12px;">
+                                <div class="parent1">
+                                    <div class="div1_ hour-row">08h00</div>
+                                    <div class="div2_ hour-row">09h00</div>
+                                    <div class="div3_ hour-row">10h00</div>
+                                    <div class="div4_ hour-row">11h00</div>
+                                    <div class="div5_ hour-row">12h00</div>
+                                    <div class="div6_ hour-row">13h00</div>
+                                    <div class="div7_ hour-row">14h00</div>
+                                    <div class="div8_ hour-row">15h00</div>
+                                    <div class="div9_ hour-row">16h00</div>
+                                    <div class="div10_ hour-row">17h00</div>
+                                    <div class="div11_ hour-row">18h00</div>
+                                    <div class="div12_ hour-row">19h00</div>
+                                    <div class="div13_ hour-row">20h00</div>
+                                </div>
+                                <div class="parent">
+                                    <div 
+                                        class="div1 hour-row row_"
+                                        @click="showEventModal()">
+                                        <div class="rdv">
+                                            08h00 - 08h30 : Mr Park
+                                        </div>
+                                    </div>
+                                    <div class="div2 hour-row row_">
+                                        <div class="rdv">
+                                            08h30 - 09h00 : Mr Park
+                                        </div>
+                                    </div>
+                                    <div class="div3 hour-row row_">
 
-                            <div class="shadow w-full rounded-lg bg-white w-full block p-8" style="position: relative;top: 50px;">
+                                    </div>
+                                    <div class="div4 hour-row row_">
 
+                                    </div>
+                                    <div class="div5 hour-row row_">
+
+                                    </div>
+                                    <div class="div6 hour-row row_">
+
+                                    </div>
+                                    <div class="div7 hour-row row_">
+
+                                    </div>
+                                    <div class="div8 hour-row row_">
+
+                                    </div>
+                                    <div class="div9 hour-row row_">
+
+                                    </div>
+                                    <div class="div10 hour-row row_">
+
+                                    </div>
+                                    <div class="div11 hour-row row_">
+
+                                    </div>
+                                    <div class="div12 hour-row row_">
+
+                                    </div>
+                                    <div class="div13 hour-row row_">
+
+                                    </div>
+                                    <div class="div14 hour-row row_">
+
+                                    </div>
+                                    <div class="div15 hour-row row_">
+
+                                    </div>
+                                    <div class="div16 hour-row row_">
+
+                                    </div>
+                                    <div class="div17 hour-row row_">
+
+                                    </div>
+                                    <div class="div18 hour-row row_">
+
+                                    </div>
+                                    <div class="div19 hour-row row_">
+
+                                    </div>
+                                    <div class="div20 hour-row row_">
+
+                                    </div>
+                                    <div class="div21 hour-row row_">
+                                        
+                                    </div>
+                                    <div class="div22 hour-row row_">
+
+                                    </div>
+                                    <div class="div23 hour-row row_">
+
+                                    </div>
+                                    <div class="div24 hour-row row_">
+
+                                    </div>
+                                    <div class="div25 hour-row row_">
+
+                                    </div>
+                                    <div class="div26 hour-row row_">
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- /Modal -->
-                    <div class="daily_calendar">
-                        <div class="parent1">
-                            <div class="div1_ row">08h00</div>
-                            <div class="div2_ row">09h00</div>
-                            <div class="div3_ row">10h00</div>
-                            <div class="div4_ row">11h00</div>
-                            <div class="div5_ row">12h00</div>
-                            <div class="div6_ row">13h00</div>
-                            <div class="div7_ row">14h00</div>
-                            <div class="div8_ row">15h00</div>
-                            <div class="div9_ row">16h00</div>
-                            <div class="div10_ row">17h00</div>
-                            <div class="div11_ row">18h00</div>
-                            <div class="div12_ row">19h00</div>
-                            <div class="div13_ row">20h00</div>
+                </div>
+                <div style=" background-color: rgba(0, 0, 0, 0.8)" class="fixed z-40 top-0 right-0 left-0 bottom-0 h-full w-full" x-show.transition.opacity="openEventModal">
+                    <div class="p-4 max-w-xl mx-auto relative absolute left-0 right-0 mt-24">
+                        <div class="shadow absolute right-0 top-0 w-10 h-10 rounded-full bg-white text-gray-500 hover:text-gray-800 inline-flex items-center justify-center cursor-pointer"
+                            x-on:click="openEventModal = !openEventModal"
+                            style="z-index: 1;top: 50px;">
+                            <svg class="fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z" />
+                            </svg>
                         </div>
-                        <div class="parent">
-                            <div class="div1 row row_">
-                                <div class="rdv">
-                                    08h00 - 08h30 : Mr Park
+
+                        <div class="shadow w-full rounded-lg bg-white w-full block" style="position: relative;top: 50px;padding: 1rem 2rem 1rem 2rem;">
+                            <h2 class="font-bold text-2xl mb-6 text-gray-800 border-b pb-2 center">Détail du rendez-vous</h2>
+
+                            <div class="border rounded-lg px-1 switch-day-button">
+                                <button
+                                    type="button"
+                                    class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center"
+                                    @click="prevDay()">
+                                    <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                    </svg>
+                                </button>
+                                <div class="border-r inline-flex h-6"></div>
+                                <button
+                                    type="button"
+                                    class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1"
+                                    @click="nextDay()">
+                                    <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="detail">
+                                <br>
+                                <div class="mb-4">
+                                    <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Date</label>
+                                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" x-model="event_date" readonly>
                                 </div>
-                            </div>
-                            <div class="div2 row row_">
-                                <div class="rdv">
-                                    08h30 - 09h00 : Mr Park
+                                <br>
+                                <div class="mb-4">
+                                    <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Heure</label>
+                                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" readonly>
                                 </div>
-                            </div>
-                            <div class="div3 row row_">
-
-                            </div>
-                            <div class="div4 row row_">
-
-                            </div>
-                            <div class="div5 row row_">
-
-                            </div>
-                            <div class="div6 row row_">
-
-                            </div>
-                            <div class="div7 row row_">
-
-                            </div>
-                            <div class="div8 row row_">
-
-                            </div>
-                            <div class="div9 row row_">
-
-                            </div>
-                            <div class="div10 row row_">
-
-                            </div>
-                            <div class="div11 row row_">
-
-                            </div>
-                            <div class="div12 row row_">
-
-                            </div>
-                            <div class="div13 row row_">
-
-                            </div>
-                            <div class="div14 row row_">
-
-                            </div>
-                            <div class="div15 row row_">
-
-                            </div>
-                            <div class="div16 row row_">
-
-                            </div>
-                            <div class="div17 row row_">
-
-                            </div>
-                            <div class="div18 row row_">
-
-                            </div>
-                            <div class="div19 row row_">
-
-                            </div>
-                            <div class="div20 row row_">
-
-                            </div>
-                            <div class="div21 row row_">
-                                
-                            </div>
-                            <div class="div22 row row_">
-
-                            </div>
-                            <div class="div23 row row_">
-
-                            </div>
-                            <div class="div24 row row_">
-
-                            </div>
-                            <div class="div25 row row_">
-
-                            </div>
-                            <div class="div26 row row_">
-
+                                <br>
+                                <div class="mb-4">
+                                    <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Professionnel</label>
+                                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" readonly>
+                                </div>
+                                <br>
+                                <div class="line">
+                                    <h2 class="full_line detail-key" style="width: 100%;"></h2>
+                                </div>
+                                <br>
+                                <div class="line center-content">
+                                    <button type="button" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 border border-gray-700 rounded-lg shadow-sm" @click="addEvent()">
+                                        Annuler le rendez-vous
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -364,6 +447,7 @@
             </div>
         </div>
     </div>
+</div>
 
         <%--  --%>
 

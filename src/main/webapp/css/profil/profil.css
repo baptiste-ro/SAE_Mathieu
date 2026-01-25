@@ -1,3 +1,37 @@
+.d-active {
+	/* Position */
+	position: absolute;
+	transition: top 0.5s ease;
+	top:5%;
+}
+
+.d-off {
+	/* Position */
+	position: absolute;
+	transition: top 0.5s ease;
+	top:110%;
+}
+
+.daily-active {
+	/* Dimension */
+	max-height: 1400px;
+	height: 1400px;
+}
+
+.elevator-calendar {
+	/* Display */
+	display: flex;
+
+	/* Position */
+	position: relative;
+
+	/* Overflow */
+	overflow: hidden;
+
+	/* Content Alignement */
+	justify-content: center;
+}
+
 .inputfile {
 	/* Size */
 	width: 0.1px;
@@ -12,6 +46,26 @@
 	z-index: -1;
 }
 
+.monthly-active {
+	/* Dimension */
+	max-height: 850px;
+	height: 850px;
+}
+
+.m-active {
+	/* Position */
+	position: absolute;
+	transition: top 0.5s ease;
+	top:5%;
+}
+
+.m-off {
+	/* Position */
+	position: absolute;
+	transition: top 0.5s ease;
+	top:-100%;
+}
+
 .profil_pic, .preview_pfp {
 	/* Image handling */
     object-fit: cover;
@@ -19,6 +73,10 @@
 	/* Size */
     width: 100px;
     height: 100px;
+}
+
+.top-half {
+	height: 1042px;
 }
 
 .validate {
@@ -42,4 +100,9 @@
 
 	/* Padding */
 	padding: 2rem 0px 0px 0px;
+}
+
+.informations_compte {
+	/* Padding */
+	padding-bottom: 2rem;
 }

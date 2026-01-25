@@ -2,6 +2,11 @@ import translate from "./translate.js";
 import date_format from "./date_format.js";
 import set_background from "./set_background.js";
 import fetch_count from "./fetch_count.js";
+import switch_calendar from "./switch_calendar.js";
+
+const monthly = document.querySelector(".monthly_calendar");
+const daily = document.querySelector(".daily_calendar");
+const container = document.querySelector(".calendar-container");
 
 const MONTH_NAMES = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
 const DAYS = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
@@ -81,11 +86,19 @@ function app() {
 			return today.toDateString() === d.toDateString() ? true : false;
 		},
 
+		switchOnCalendar(date) {
+			this.event_date = translate(new Date(this.year, this.month, date).toDateString());
+			this.dayNumber = date;
+			switch_calendar(daily, monthly, container);
+		},
+
+		switchOffCalendar() {
+			switch_calendar(daily, monthly, container);
+		},
+
 		showEventModal(date) {
 			// open the modal
 			this.openEventModal = true;
-			this.event_date = translate(new Date(this.year, this.month, date).toDateString());
-			this.dayNumber = date;
 		},
 
 		addEvent() {

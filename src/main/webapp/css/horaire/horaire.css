@@ -175,7 +175,7 @@
     flex-direction: row;
 }
 
-.switcher_button {
+.back-button {
     background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(../public/booking.jpg);
     border: 1px solid #000000;
     border-radius: 100%;

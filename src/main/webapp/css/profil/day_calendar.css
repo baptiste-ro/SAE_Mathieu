@@ -1,3 +1,7 @@
+.back-button-container {
+    margin-right: 100px;
+}
+
 .center {
     /* Text */
     text-align: center;
@@ -16,6 +20,27 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+
+    /* Padding */
+    padding-top: 32px;
+    padding-bottom: 96px;
+
+    /* Margin */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#date-title {
+    /* Text */
+    font-size: x-large;
+    text-align: center;
+    color: black;
+
+    /* Margin */
+    margin-bottom: 2rem;
+
+    /* Background */
+    background: darkgray;
 }
 
 .detail {
@@ -66,6 +91,11 @@
 
     /* Margin */
     margin: 10px 0px 10px 0px;
+}
+
+#main-day-switch {
+    /* Margin */
+    margin-bottom: 2rem;
 }
 
 .parent {
@@ -152,12 +182,12 @@
 .div12_ { grid-area: 23 / 1 / 25 / 2; }
 .div13_ { grid-area: 25 / 1 / 27 / 2; }
 
-.row {
+.hour-row {
     /* Dimension */
     height: 40px;
 
-    /* Content alignement */
-    align-items: center;
+    /* Text */
+    color: black;
 }
 
 .row_ {
@@ -212,4 +242,10 @@
 
     /* Content alignement */
     justify-content: center;
+}
+
+.unselectable {
+    /* Selection */
+    user-select: none;
+    cursor: default;
 }
