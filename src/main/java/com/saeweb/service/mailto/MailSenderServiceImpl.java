@@ -21,7 +21,7 @@ public class MailSenderServiceImpl implements MailSenderService {
 
     @Override
     public void sendMail(Appointment appointment) throws MessagingException {
-        Users user = repo.findById(appointment.getClientId()).get();
+        Users user = repo.findById(appointment.getClient().getCid()).get();
 
         MimeMessage message = sender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);

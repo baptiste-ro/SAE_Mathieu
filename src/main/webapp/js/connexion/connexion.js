@@ -37,7 +37,7 @@ valid_form.addEventListener('click', (event) => {
     })
     .then(redirect => {
         if (redirect == "Connexion.jsp") {
-            document.querySelector('#username').value = "";
+            document.querySelector('#email').value = "";
             document.querySelector('#password').value = "";
             wrong_credential_bow.classList.remove('hide');
         } else {

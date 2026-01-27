@@ -8,6 +8,8 @@ const monthly = document.querySelector(".monthly_calendar");
 const daily = document.querySelector(".daily_calendar");
 const container = document.querySelector(".calendar-container");
 
+const user_id = document.querySelector('.user-id');
+
 const MONTH_NAMES = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
 const DAYS = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
 
@@ -96,17 +98,22 @@ function app() {
 			switch_calendar(daily, monthly, container);
 		},
 
+		showProfileModal() {
+			this.openEventModal = true;
+		},
+
 		showEventModal(date) {
 			// open the modal
+			this.event_date = translate(new Date(this.year, this.month, date).toDateString());
 			this.openEventModal = true;
 		},
 
 		addEvent() {
-
 			const appointment_object = {
 				id: {appointmentDate: date_format(this.event_date), appointmentTime: document.querySelector('.search-bar2').value},
-				clientId: document.querySelector('.user-id').id
+				cid: user_id.id
 			}
+			
 						
 			fetch("/sae/appointment/add-appointment", {
 				method: 'POST',
@@ -140,7 +147,7 @@ function app() {
 				this.month--;
 			}
 			this.getNoOfDays();
-			fetch_count(this.year, this.month);
+			fetch_count(this.year, this.month, 0);
 		},
 
 		nextMonth() {
@@ -194,7 +201,8 @@ function app() {
 			this.no_of_days = daysArray;
 		},
 
-		showSelectedDay() {
+		sendRedirect() {
+			window.location.href = "/sae/Connexion.jsp"
 		}
 	}
 }

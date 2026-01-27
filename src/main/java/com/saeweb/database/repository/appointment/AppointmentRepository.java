@@ -2,6 +2,7 @@ package com.saeweb.database.repository.appointment;
 
 import com.saeweb.database.entity.appointment.Appointment;
 import com.saeweb.database.entity.appointment.AppointmentID;
+import com.saeweb.database.entity.users.Users;
 import com.saeweb.dto.appointment.NbAppointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -9,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Repository
@@ -18,4 +20,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Appoin
 
     @Query(value = "SELECT a FROM Appointment AS a WHERE a.id.appointmentDate = :d")
     List<Appointment> findByAppointmentDate(@Param(value = "d") LocalDate appointmentDate);
+
+    @Query(value = "SELECT a.id.appointmentTime FROM Appointment AS a WHERE a.id.appointmentDate = :d AND a.client = :c")
+    List<LocalTime> findByCidAndDate(@Param(value = "c") Users client, @Param(value = "d") LocalDate date);
 }

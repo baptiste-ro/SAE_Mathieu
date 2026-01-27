@@ -38,10 +38,10 @@ public class ConnectionServiceImpl implements ConnectionService {
                 };
             }
             logger.info("\nThe connection cannot be granted. Username or password is not correct.\nList of the users found : {}", usersList);
-            return new Users();
+            return null;
         } catch (Exception e) {
             logger.error("An error occured : {}", e.getMessage());
-            return new Users();
+            return null;
         }
     }
 }

@@ -27,7 +27,7 @@ public class ConnectionController {
     @PostMapping("/connection")
     public String connection(@RequestBody ConnectionUser user, HttpSession session) {
         Users currentUser = connectionService.getConnection(user);
-        if (!currentUser.isEmpty()) {
+        if (!(currentUser == null)) {
             session.setAttribute("currentUser", currentUser);
 
             System.out.println(session.getAttribute("currentUser"));

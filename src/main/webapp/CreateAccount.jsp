@@ -47,7 +47,7 @@
                <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <!-- Navbar pour naviguer et selectionner la page qu'on souhaite visiter !-->
-                        <a href="../index.php" class="nav-item nav-link ">Accueil</a>
+                        <a href="Accueil.jsp" class="nav-item nav-link ">Accueil</a>
                         <a href="liaisons.html.php" class="nav-item nav-link">Liaisons</a>
                         <a href="tarifs.html.php" class="nav-item nav-link">Tarifs</a>
                         <a href="horaire.html.php" class="nav-item nav-link ">Horaires</a>
@@ -156,7 +156,7 @@
                    <!-- Met le titre -->
                    <h4 class="text-white mb-3">Mariteam</h4>
                    <!-- Lien vers les autres pages du site sous le titre-->
-                   <a href="../index.php">Accueil</a> <br>
+                   <a href="Accueil.jsp">Accueil</a> <br>
                    <a href="liaisons.html.php">Liaisons</a> <br>
                    <a href="tarifs.html.php">Tarifs</a> <br>
                    <a href="horaire.html.php">Horaires</a> <br>
@@ -183,7 +183,7 @@
                    <!-- Permet de mettre le texte en dessous de la barre du bas -->
                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                        <!-- Peremt d'ecrire et d'indiquer les droits-->
-                       &copy; <a class="border-bottom" href="../index.php">Mariteam</a>, All Right Reserved.
+                       &copy; <a class="border-bottom" href="Accueil.jsp">Mariteam</a>, All Right Reserved.
                        Designed By Tom Lelievre, Axel Wilfart, Baptiste Royer</a>
                    </div>
                </div>
