@@ -53,13 +53,13 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <!-- Navbar pour naviguer et selectionner la page que l'ont souhaite visiter !-->
-                    <a href="index.php" class="nav-item nav-link active">Accueil</a>
+                    <a href="Accueil.jsp" class="nav-item nav-link active">Accueil</a>
                 </div>
                 <%
                     if (!connected) {
                         out.println("<a href='Connexion.jsp' class='btn btn-primary rounded-pill py-2 px-4'>Se connecter</a>");
                     } else {
-                        out.println("<a id='" + user.getID() + "' href='Profil.jsp' class='btn btn-primary rounded-pill py-2 px-4 user-id'>" + user.getFirstName() + "</a>");
+                        out.println("<a id='" + user.getCid() + "' href='Profil.jsp' class='btn btn-primary rounded-pill py-2 px-4 user-id'>" + user.getFirstName() + "</a>");
                     }
                 %>
             </div>
@@ -150,7 +150,13 @@
 						<template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">
 							<div style="width: 14.28%; height: 120px" class="px-4 pt-2 border-r border-b relative cursor-pointer calendar-date"
                                 :data-date="date"
-								@click="showEventModal(date)">
+								@click=<%
+                                    if (!connected) {
+                                        out.println("\"sendRedirect()\"");
+                                    } else {
+                                        out.println("\"showEventModal(date)\"");
+                                    }
+                                %>>
 								<div
 									x-text="date"
 									class="inline-flex w-6 h-6 items-center justify-center text-center leading-none rounded-full transition ease-in-out duration-100"
@@ -365,7 +371,7 @@
                     <!-- Met le titre -->
                     <h4 class="text-white mb-3">MarieTeam</h4>
                     <!-- Ces balises <a> sont des liens de navigation vers les différentes pages du site-->
-                    <a href="index.php">Accueil</a> <br>
+                    <a href="Accueil.jsp">Accueil</a> <br>
                     <a href="Vue/liaisons.html.php">Liaisons</a> <br>
                     <a href="Vue/tarifs.html.php">Tarifs</a> <br>
                     <a href="Vue/horaire.html.php">Horaires</a> <br>
@@ -393,7 +399,7 @@
                     <!-- Crée une colonne qui s’adapte selon la taille de l’écran -->
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         <!-- Peremt d'ecrire et d'indiquer les droits-->
-                        &copy; <a class="border-bottom" href="index.php">Mariteam</a>, All Right Reserved.
+                        &copy; <a class="border-bottom" href="Accueil.jsp">Mariteam</a>, All Right Reserved.
                         Designed By Tom Lelievre, Axel Wilfart, Baptiste Royer</a>
                     </div>
                 </div>

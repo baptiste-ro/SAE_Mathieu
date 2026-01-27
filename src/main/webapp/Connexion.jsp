@@ -47,7 +47,7 @@
 
                 <div class="navbar-nav ms-auto py-0">
                     <!-- Navbar pour naviguer et selectionner la page que l'ont souhaite visiter !-->
-                    <a href="index.php" class="nav-item nav-link active">Accueil</a>
+                    <a href="Accueil.jsp" class="nav-item nav-link active">Accueil</a>
                 </div>
                 <%
                     if (!connected) {
@@ -121,7 +121,7 @@
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-3">Mariteam</h4>
-                <a href="../index.php">Accueil</a> <br>
+                <a href="Accueil.jsp">Accueil</a> <br>
                 <a href="liaisons.html.php">Liaisons</a> <br>
                 <a href="tarifs.html.php">Tarifs</a> <br>
                 <a href="horaire.html.php">Horaires</a> <br>

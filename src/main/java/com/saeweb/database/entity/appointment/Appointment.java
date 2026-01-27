@@ -1,8 +1,7 @@
 package com.saeweb.database.entity.appointment;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
+import com.saeweb.database.entity.users.Users;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -12,8 +11,9 @@ public class Appointment {
     @EmbeddedId
     private AppointmentID id;
 
-    @Column(name = "cid")
-    private int clientId;
+    @ManyToOne
+    @JoinColumn(name = "cid", referencedColumnName = "cid")
+    private Users client;
 
     public AppointmentID getId() {
         return id;
@@ -23,16 +23,16 @@ public class Appointment {
         this.id = id;
     }
 
-    public int getClientId() {
-        return clientId;
+    public Users getClient() {
+        return client;
     }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
+    public void setClientId(Users clientId) {
+        this.client = clientId;
     }
 
     public String toString() {
-        return "{\n    id: {date: " + this.id.getAppointmentDate().toString() + ", time: " + this.id.getAppointmentTime().toString() + "},\n    cid: " + this.clientId + "\n}";
+        return "{\n    id: {date: " + this.id.getAppointmentDate().toString() + ", time: " + this.id.getAppointmentTime().toString() + "},\n    cid: " + this.client.getCid() + "\n}";
     }
 
     public boolean isNull() {

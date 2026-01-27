@@ -1,5 +1,6 @@
 package com.saeweb.database.entity.users;
 
+import com.saeweb.database.entity.appointment.Appointment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -16,8 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer ID;
+    @Column(name = "cid")
+    private Integer cid;
 
     @Column(name = "first_name", length = 50)
     private String firstName;
@@ -43,8 +46,11 @@ public class Users {
     @Column(name = "pfp_id")
     private String profilePicture;
 
-    public Integer getID() {
-        return ID;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Appointment> appointmentList;
+
+    public Integer getCid() {
+        return cid;
     }
 
     public String getFirstName() {
@@ -136,7 +142,7 @@ public class Users {
             try {
                 Users user = (Users) obj;
 
-                return this.ID.equals(user.getID()) &&
+                return this.cid.equals(user.getCid()) &&
                         this.firstName.equals(user.getFirstName()) &&
                         this.password.equals(user.getPassword()) &&
                         this.email.equals(user.getEmail()) &&

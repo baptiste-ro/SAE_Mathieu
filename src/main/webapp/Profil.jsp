@@ -50,14 +50,14 @@
     <script type="module" src="js/connexion/disconnection.js" defer></script>
     <script type="module" src="js/profile/profile.js" defer></script>
     <script type="module" src="js/accueil/index.js" defer></script>
-	<script type="module" src="js/accueil/calendar/calendar.js"></script>
+	<script type="module" src="js/accueil/calendar/profile_calendar.js"></script>
 </head>
 
 <body>
     <!-- Navbar & Hero Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-            <a href="" class="navbar-brand p-0">
+            <a href="Accueil.jsp" class="navbar-brand p-0">
                 <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>Mariteam</h1>
                 <!-- <img src="img/logo.png" alt="Logo"> -->
           
@@ -68,7 +68,7 @@
                <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <!-- Navbar pour naviguer et selectionner la page qu'on souhaite visiter !-->
-                        <a href="../index.php" class="nav-item nav-link ">Accueil</a>
+                        <a href="Accueil.jsp" class="nav-item nav-link ">Accueil</a>
                 </div>
                 <p style="background-color: #e36355;border-color: #e36355;" class="btn btn-primary rounded-pill py-2 px-4" id="disconnect">Se déconnecter</p>
 
@@ -79,10 +79,10 @@
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
                     <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                        <h1 class="display-3 text-white animated slideInDown active">Profil</h1>
+                        <h1 class="display-3 text-white animated slideInDown active profile_id" id=<%= user.getCid()%>>Profil</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item"><a href="../index.php">Accueil</a></li>
+                                <li class="breadcrumb-item"><a href="Accueil.jsp">Accueil</a></li>
                                 <li class="breadcrumb-item text-white active" aria-current="page">profil</li>
                             </ol>
                         </nav>
@@ -291,88 +291,82 @@
                                     <div class="div13_ hour-row">20h00</div>
                                 </div>
                                 <div class="parent">
-                                    <div 
-                                        class="div1 hour-row row_"
-                                        @click="showEventModal()">
-                                        <div class="rdv">
-                                            08h00 - 08h30 : Mr Park
-                                        </div>
-                                    </div>
-                                    <div class="div2 hour-row row_">
-                                        <div class="rdv">
-                                            08h30 - 09h00 : Mr Park
-                                        </div>
-                                    </div>
-                                    <div class="div3 hour-row row_">
+                                    <div class="div1 hour-row row_" id="_08h00">
 
                                     </div>
-                                    <div class="div4 hour-row row_">
+                                    <div class="div2 hour-row row_" id="_08h30">
+                                    
+                                    </div>
+                                    <div class="div3 hour-row row_" id="_09h00">
 
                                     </div>
-                                    <div class="div5 hour-row row_">
+                                    <div class="div4 hour-row row_" id="_09h30">
 
                                     </div>
-                                    <div class="div6 hour-row row_">
+                                    <div class="div5 hour-row row_" id="_10h00">
 
                                     </div>
-                                    <div class="div7 hour-row row_">
+                                    <div class="div6 hour-row row_" id="_10h30">
 
                                     </div>
-                                    <div class="div8 hour-row row_">
+                                    <div class="div7 hour-row row_" id="_11h00">
 
                                     </div>
-                                    <div class="div9 hour-row row_">
+                                    <div class="div8 hour-row row_" id="_11h30">
 
                                     </div>
-                                    <div class="div10 hour-row row_">
+                                    <div class="div9 hour-row row_" id="_12h00">
 
                                     </div>
-                                    <div class="div11 hour-row row_">
+                                    <div class="div10 hour-row row_" id="_12h30">
 
                                     </div>
-                                    <div class="div12 hour-row row_">
+                                    <div class="div11 hour-row row_" id="_13h00">
 
                                     </div>
-                                    <div class="div13 hour-row row_">
+                                    <div class="div12 hour-row row_" id="_13h30">
 
                                     </div>
-                                    <div class="div14 hour-row row_">
+                                    <div class="div13 hour-row row_" id="_14h00">
 
                                     </div>
-                                    <div class="div15 hour-row row_">
+                                    <div class="div14 hour-row row_" id="_14h30">
 
                                     </div>
-                                    <div class="div16 hour-row row_">
+                                    <div class="div15 hour-row row_" id="_15h00">
 
                                     </div>
-                                    <div class="div17 hour-row row_">
+                                    <div class="div16 hour-row row_" id="_15h30">
 
                                     </div>
-                                    <div class="div18 hour-row row_">
+                                    <div class="div17 hour-row row_" id="_16h00">
 
                                     </div>
-                                    <div class="div19 hour-row row_">
+                                    <div class="div18 hour-row row_" id="_16h30">
 
                                     </div>
-                                    <div class="div20 hour-row row_">
+                                    <div class="div19 hour-row row_" id="_17h00">
 
                                     </div>
-                                    <div class="div21 hour-row row_">
+                                    <div class="div20 hour-row row_" id="_17h30">
+
+                                    </div>
+                                    <div class="div21 hour-row row_" id="_18h00">
                                         
                                     </div>
-                                    <div class="div22 hour-row row_">
+                                    <div class="div22 hour-row row_" id="_18h30">
 
                                     </div>
-                                    <div class="div23 hour-row row_">
+                                    <div class="div23 hour-row row_" id="_19h00">
 
                                     </div>
-                                    <div class="div24 hour-row row_">
+                                    <div class="div24 hour-row row_" id="_19h30">
 
                                     </div>
-                                    <div class="div25 hour-row row_">
+                                    <div class="div25 hour-row row_" id="_20h00">
 
                                     </div>
-                                    <div class="div26 hour-row row_">
+                                    <div class="div26 hour-row row_" id="_20h30">
 
                                     </div>
                                 </div>
@@ -394,26 +388,6 @@
                         <div class="shadow w-full rounded-lg bg-white w-full block" style="position: relative;top: -30px;padding: 1rem 2rem 1rem 2rem;">
                             <h2 class="font-bold text-2xl mb-6 text-gray-800 border-b pb-2 center">Détail du rendez-vous</h2>
 
-                            <div class="border rounded-lg px-1 switch-day-button">
-                                <button
-                                    type="button"
-                                    class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center"
-                                    @click="prevDay()">
-                                    <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                                    </svg>
-                                </button>
-                                <div class="border-r inline-flex h-6"></div>
-                                <button
-                                    type="button"
-                                    class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1"
-                                    @click="nextDay()">
-                                    <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                    </svg>
-                                </button>
-                            </div>
-
                             <div class="detail">
                                 <br>
                                 <div class="mb-4">
@@ -423,12 +397,12 @@
                                 <br>
                                 <div class="mb-4">
                                     <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Heure</label>
-                                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" readonly>
+                                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="appointment_time" type="text" x-model="time" onfocus="this.blur()" readonly>
                                 </div>
                                 <br>
                                 <div class="mb-4">
-                                    <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Professionnel</label>
-                                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" readonly>
+                                    <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Adresse</label>
+                                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="GlobalAddressValue" onfocus="this.blur()" readonly>
                                 </div>
                                 <br>
                                 <div class="line">
@@ -436,7 +410,7 @@
                                 </div>
                                 <br>
                                 <div class="line center-content">
-                                    <button type="button" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 border border-gray-700 rounded-lg shadow-sm" @click="addEvent()">
+                                    <button type="button" class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 border border-gray-700 rounded-lg shadow-sm" @click="deleteEvent()">
                                         Annuler le rendez-vous
                                     </button>
                                 </div>
@@ -469,7 +443,7 @@
                    <!-- Met le titre -->
                    <h4 class="text-white mb-3">Mariteam</h4>
                    <!-- Lien vers les autres pages du site sous le titre-->
-                   <a href="../index.php">Accueil</a> <br>
+                   <a href="Accueil.jsp">Accueil</a> <br>
                    <a href="connexion.html.php"> Se connecter</a> <br>
 
 
@@ -492,8 +466,8 @@
                    <!-- Permet de mettre le texte en dessous de la barre du bas -->
                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                        <!-- Peremt d'ecrire et d'indiquer les droits-->
-                       &copy; <a class="border-bottom" href="../index.php">Mariteam</a>, All Right Reserved.
-                       Designed By Tom Lelievre, Axel Wilfart, Baptiste Royer</a>
+                       &copy; <a class="border-bottom" href="Accueil.jsp">Mariteam</a>, All Right Reserved.
+                       Designed By Tom Lelievre, Baptiste Royer</a>
                    </div>
                </div>
            </div>
