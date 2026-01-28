@@ -150,6 +150,18 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>7.0.0</version>
+                <configuration>
+                    <url>jdbc:h2:file:./data/demo</url>
+                    <user>sa</user>
+                    <password>password</password>
+                </configuration>
+            </plugin>
+
+
             <!-- Resource compiling plugin -->
 
             <plugin>

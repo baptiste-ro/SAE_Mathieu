@@ -1,93 +1,173 @@
-# SaeWeb
+# Projet SAE - Système de gestion de rendez-vous en ligne
+
+**Université de Lille**  
+**BUT Informatique – Semestre 5**  
+**Matière : S5.A.01 - Frameworks Web**  
+**Enseignant : Philippe Mathieu**  
+**Année universitaire 2025-2026**
+
+**Auteurs**
+- Baptiste Royer
+- Tom Lelievre
+
+## Introduction
+
+Ce projet consiste à réaliser un **site web de gestion de rendez-vous multi-utilisateurs**, inspiré de plateformes comme Doctolib ou des outils de prise de créneaux.
+
+### Fonctionnalités principales
+- Inscription et connexion des utilisateurs
+- Affichage d’un calendrier réactif avec créneaux disponibles
+- Réservation d’un créneau (avec vérification des contraintes)
+- Visualisation des créneaux occupés / libres (couleurs)
+- Gestion du profil utilisateur (modification informations, photo)
+- Déconnexion
+
+### Technologies utilisées
+- Backend : Spring Boot, Spring Data JPA
+- Frontend : JSP, JS, Tailwind
+- Base de données : H2, Flyway
+- Build : Maven
+
+## Installation et démarrage
+
+### Prérequis
+- Java 17+
+- Maven 3.8+
+
+### Étapes
+1. Dézipper le projet
+
+2. Installer les dépendances
+
+    ```bash
+    mvn install
+    ```
+
+3. Lancer l'application
+
+    ```bash
+    mvn spring-boot:run
+    ```
+
+4. Accéder au site
+
+    - **URL principale** : http://localhost:8080/sae/Accueil.jsp
+
+    - **Console H2** : http://localhost:8080/sae/h2-console
+
+        - **JDBC URL** : `jdbc:h2:file:./data/demo`
+
+        - **Utilisateur** : `sa`
+        - **Mot de passe** : `password`
+
+### Tester rapidement
+
+- Cliquez sur le bouton **« Se connecter »** en haut à droite de l’écran.
+
+- Sélectionnez ensuite **« Pas encore de compte ? Créer un compte »** et suivez les étapes pour créer votre compte.
+
+- Une fois le compte créé, vous serez redirigé vers la page de connexion.
+
+- Après vous être connecté, vous pouvez consulter le **calendrier** depuis la page d’accueil.
+
+- Il ne vous reste plus qu’à **réserver un créneau**.
+
+- Un **rôle administrateur** est disponible avec les identifiants suivants :
+    - **Email** : `baptiste-royer@outlook.com`
+    - **Mot de passe** : `root`
 
 
 
-## Getting started
+## Fonctionnalités principales
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+| Fonctionnalité                        | Description                                                                 |
+|---------------------------------------|-----------------------------------------------------------------------------|
+| Inscription & Connexion               | Création de compte et connexion avec email/mot de passe          |
+| Déconnexion                           | Bouton de déconnexion                                              |
+| Calendrier réactif                    | Affichage mensuel avec cases cliquables      |
+| Prise de rendez-vous                  | Sélection d’une date + horaire         |
+| Contraintes métier                    | 1 personne maximum par créneau de 15 minutes (cas médecin)                 |
+| Gestion du profil                     | Modification du nom, prénom, adresse et photo de profil                     |
+| Pop-up cookies & RGPD                 | Affichage au premier accès avec lien vers la politique de confidentialité  |
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Aspects techniques
 
-## Add your files
+### Modèle Conceptuel de Données (MCD)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+Deux entités principales :
 
-```
-cd existing_repo
-git remote add origin https://gitlab.univ-lille.fr/tom.lelievre.etu/saeweb.git
-git branch -M main
-git push -uf origin main
-```
+- **Users**  
+  id (PK), nom, prenom, adresse, email, mot_de_passe, role
 
-## Integrate with your tools
+- **Appointment**  
+  appointment_date, appointment_time, cid (FK → Users.id)  
+  → Clé primaire composite : (appointment_date + appointment_time)
 
-- [ ] [Set up project integrations](https://gitlab.univ-lille.fr/tom.lelievre.etu/saeweb/-/settings/integrations)
+Le modèle est simple et centré sur la réservation : un utilisateur peut avoir plusieurs rendez-vous, chaque rendez-vous est lié à un créneau précis (date + heure).
 
-## Collaborate with your team
+### Base de données
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+- **SGBD utilisé** : H2 embarquée (fichier `./data/demo`) pour le développement
+- **Migrations** : Flyway (scripts versionnés)
+    - V1__create_tables.sql : création des tables Users et Appointment
+    - V2__increase_password_size.sql : agrandissement du champ mot_de_passe
+    - V3__addition_of_appointment_table.sql : ajout de la table des rendez-vous
 
-## Test and Deploy
+- **Données d’exemple insérées** :
+    - alice@mail.com / 1234
+    - paul@mail.com / 1234
 
-Use the built-in continuous integration in GitLab.
+La base est calibrée pour gérer des créneaux fixes de 30 minutes (8h–20h30)
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### Objets métier principaux
 
-***
+- **Users** : entité JPA pour les utilisateurs (nom, prénom, email, mot de passe, adresse)
+- **Appointment** : entité pour les rendez-vous avec clé composite (date + heure) + lien vers l’utilisateur
+- **AppointmentID** : classe @Embeddable pour la clé primaire composite
+- **DTOs** : ConnectionUser (login), ProfileUser (édition profil), AppointmentAnswer (réponses sur les RDV)
 
-# Editing this README
+### Contrôleurs principaux
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+- **ConnectionController** : gestion connexion / déconnexion
+- **AccountManagementController** : création de compte
+- **ProfileController** : modification des informations utilisateur et upload photo
+- **AppointmentController** : ajout de RDV et comptage par mois/date
+- **IndexPageController** : chargement des textes et images de la page d’accueil
 
-## Suggestions for a good README
+### Ce qui a pris le plus de temps
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Le calibrage et la mise au point de la **base de données** ont représenté la partie la plus chronophage :
 
-## Name
-Choose a self-explaining name for your project.
+- Conception des tables et clés composites (date + heure)
+- Écriture et tests des scripts Flyway (migrations)
+- Insertion et vérification des données d’exemple
+- Requêtes SQL pour vérifier les contraintes (disponibilité, nombre de RDV par créneau)
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+## Conclusion détaillée
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### Intérêt du projet
+Ce projet permet de créer un site de gestion de rendez-vous simple et fonctionnel, inspiré de plateformes comme Doctolib. Il met en pratique la conception d’une base de données, la gestion de créneaux horaires, un calendrier réactif et des contraintes métier de base. C’est un bon exercice full-stack qui montre comment lier backend, base de données et interface utilisateur.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+### Difficultés rencontrées
+Le plus dur a été de **bien calibrer la base de données** :
+- structure des tables avec clé composite (date + heure)
+- migrations Flyway sans perte de données
+- requêtes SQL pour vérifier la disponibilité en temps réel
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Le calendrier réactif et l’intégration JSP + responsive ont aussi demandé plusieurs itérations.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Ce que j’ai appris
+- Concevoir un MCD pour un système de réservation
+- Utiliser Flyway pour versionner la BDD
+- Écrire des requêtes SQL efficaces pour les contraintes en temps réel
+- Gérer une clé composite en JPA
+- Intégrer un calendrier interactif avec JS et couleurs dynamiques
+- Lier backend Java et frontend JSP
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+### Perspectives futures
+- Ajouter un paramétrage des contraintes (ex : piscine 30 pers/h) via interface
+- Afficher l’historique « Mes rendez-vous »
+- Permettre de supprimer les rendez-vous d'une journée
+- Ajouter la possibilité d'empêcher les utilisateurs de prendre des rendez-vous certains jours
+- Multi-plannings (plusieurs types de créneaux sur le même site)
+- Spring Security 
